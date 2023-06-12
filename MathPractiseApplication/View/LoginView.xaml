@@ -14,7 +14,7 @@
         MouseDown="Window_MouseDown">
     <Border CornerRadius="40">
         <Border.Background>
-            <ImageBrush ImageSource="/Images/Background.png" Stretch="Fill"/>
+            <ImageBrush ImageSource="../Images/Background.png" Stretch="Fill"/>
         </Border.Background>
         <Border 
             CornerRadius="15"
@@ -49,18 +49,17 @@
                     <ColumnDefinition Width="25"/>
                     <ColumnDefinition Width="15"/>
                 </Grid.ColumnDefinitions>
-                
-                <TextBlock Text="LOG IN"
+
+                <TextBlock Text="ВОЙТИ"
                            Foreground="DarkGray"
                            FontSize="18"
                            FontFamily="Montserrat"
                            Cursor="Hand"
                            VerticalAlignment="Center"
-                           Margin="15,0,0,0">
-                </TextBlock>
+                           Margin="15,0,0,0"/>
 
                 <Button
-                    Name="Minimazebtn"
+                    x:Name="Minimazebtn"
                     Grid.Column="1"
                     BorderThickness="0"
                     Content="-"
@@ -68,47 +67,18 @@
                     Foreground="White"
                     FontSize="18"
                     Click="Minimazebtn_Click">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="Transparent"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="Indigo"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="30" Height="25" Width="25"
-                                        Background="{TemplateBinding Background}">
-                                    <ContentPresenter HorizontalAlignment="Center"
-                                                      VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                </Button>
-                <Button
-                    Name="Closebtn"
-                    Grid.Column="2"
-                    BorderThickness="0"
-                    Content="x"
-                    Cursor="Hand"
-                    Foreground="White"
-                    FontSize="14"
-                    Click="Closebtn_Click">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="Transparent"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="MediumVioletRed"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Indigo"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                     <Button.Template>
-                        <ControlTemplate TargetType="Button">
+                        <ControlTemplate TargetType="{x:Type Button}">
                             <Border CornerRadius="30" Height="25" Width="25"
                                         Background="{TemplateBinding Background}">
                                 <ContentPresenter HorizontalAlignment="Center"
@@ -117,6 +87,58 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
+                <Button
+                    x:Name="Closebtn"
+                    Grid.Column="2"
+                    BorderThickness="0"
+                    Content="x"
+                    Cursor="Hand"
+                    Foreground="White"
+                    FontSize="14"
+                    Click="Closebtn_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="MediumVioletRed"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border CornerRadius="30" Height="25" Width="25"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <StackPanel Width="300"
+                            Grid.Row="2"
+                            Orientation="Vertical"
+                            Margin="0,35,0,0">
+
+                    <Image Width="150" Height="150" Source="../Images/MathIcon.png"/>
+                    <TextBlock Text="MATHPRACTISE"
+                               Foreground="White"
+                               FontSize="25"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat"
+                               HorizontalAlignment="Center"
+                               Margin="0,10,0,15"/>
+                    <TextBlock Text="Данное приложение поможет вам познать основы математики"
+                               Foreground="LightGray"
+                               FontSize="14"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"
+                               />
+                    <TextBlock/>
+                </StackPanel>
             </Grid>
         </Border>
     </Border>
