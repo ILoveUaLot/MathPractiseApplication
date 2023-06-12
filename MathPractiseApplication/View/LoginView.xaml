@@ -19,7 +19,8 @@
         <Border 
             CornerRadius="15"
             BorderThickness="3"
-            Opacity="0.93">
+            Opacity="0.93"
+            Padding="0,5,0,0">
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
 
@@ -61,28 +62,60 @@
                 <Button
                     Name="Minimazebtn"
                     Grid.Column="1"
-                    Background="Indigo"
                     BorderThickness="0"
                     Content="-"
                     Cursor="Hand"
                     Foreground="White"
                     FontSize="18"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
                     Click="Minimazebtn_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Indigo"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="30" Height="25" Width="25"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
                 </Button>
                 <Button
                     Name="Closebtn"
                     Grid.Column="2"
-                    Background="Indigo"
                     BorderThickness="0"
                     Content="x"
                     Cursor="Hand"
                     Foreground="White"
                     FontSize="14"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
                     Click="Closebtn_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="MediumVioletRed"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="30" Height="25" Width="25"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
                 </Button>
             </Grid>
         </Border>
