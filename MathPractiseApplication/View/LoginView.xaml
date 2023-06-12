@@ -5,8 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MathPractiseApplication.View"
         mc:Ignorable="d"
-        Title="LoginView" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="LoginView" Height="550" Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True"
+        MouseDown="Window_MouseDown">
+    <Border CornerRadius="40">
+        <Border.Background>
+            <ImageBrush ImageSource="/Images/Background.png" Stretch="Fill"/>
+        </Border.Background>
+        <Border 
+            CornerRadius="15"
+            BorderThickness="3"
+            Opacity="0.93">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+
+                    <GradientStop Color="#DD58D6" Offset="0"/>
+                    <GradientStop Color="#DB005B" Offset="0.5"/>
+                    <GradientStop Color="#4942E4" Offset="0.8"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#1a0e50" Offset="0.01"/>
+
+
+
+                    <GradientStop Color="#060431" Offset="0.75"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+    </Border>
+    
 </Window>
