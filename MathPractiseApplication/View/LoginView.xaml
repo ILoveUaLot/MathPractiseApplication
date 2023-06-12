@@ -46,7 +46,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="25"/>
                     <ColumnDefinition Width="25"/>
-                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="15"/>
                 </Grid.ColumnDefinitions>
                 
                 <TextBlock Text="LOG IN"
@@ -71,7 +71,19 @@
                     VerticalContentAlignment="Center"
                     Click="Minimazebtn_Click">
                 </Button>
-                
+                <Button
+                    Name="Closebtn"
+                    Grid.Column="2"
+                    Background="Indigo"
+                    BorderThickness="0"
+                    Content="x"
+                    Cursor="Hand"
+                    Foreground="White"
+                    FontSize="14"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Click="Closebtn_Click">
+                </Button>
             </Grid>
         </Border>
     </Border>

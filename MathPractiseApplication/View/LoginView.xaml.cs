@@ -35,5 +35,10 @@ namespace MathPractiseApplication.View
         {
             WindowState= WindowState.Minimized;
         }
+
+        private void Closebtn_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
