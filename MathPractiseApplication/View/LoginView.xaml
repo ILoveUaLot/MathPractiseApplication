@@ -37,6 +37,29 @@
                     <GradientStop Color="#060431" Offset="0.75"/>
                 </LinearGradientBrush>
             </Border.Background>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Text="LOG IN"
+                           Foreground="DarkGray"
+                           FontSize="18"
+                           FontFamily="Montserrat"
+                           Cursor="Hand"
+                           VerticalAlignment="Center"
+                           Margin="15,0,0,0">
+                </TextBlock>
+                
+                
+            </Grid>
         </Border>
     </Border>
     
