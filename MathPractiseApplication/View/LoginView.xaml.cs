@@ -30,5 +30,10 @@ namespace MathPractiseApplication.View
                 DragMove();
             
         }
+
+        private void Minimazebtn_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState= WindowState.Minimized;
+        }
     }
 }

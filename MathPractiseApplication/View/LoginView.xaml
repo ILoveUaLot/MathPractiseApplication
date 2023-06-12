@@ -57,7 +57,20 @@
                            VerticalAlignment="Center"
                            Margin="15,0,0,0">
                 </TextBlock>
-                
+
+                <Button
+                    Name="Minimazebtn"
+                    Grid.Column="1"
+                    Background="Indigo"
+                    BorderThickness="0"
+                    Content="-"
+                    Cursor="Hand"
+                    Foreground="White"
+                    FontSize="18"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Click="Minimazebtn_Click">
+                </Button>
                 
             </Grid>
         </Border>
