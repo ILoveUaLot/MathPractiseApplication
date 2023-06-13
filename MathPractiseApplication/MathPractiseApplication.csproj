@@ -16,4 +16,12 @@
     <Resource Include="Images\Background.png" />
     <Resource Include="Images\MathIcon.png" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Fonts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
+  </ItemGroup>
 </Project>
