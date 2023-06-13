@@ -4,9 +4,6 @@
              xmlns:local="clr-namespace:MathPractiseApplication"
              StartupUri="View/LoginView.xaml">
     <Application.Resources>
-        <Style x:Key="Montserrat">
-            <Setter Property="TextElement.FontFamily" Value="/Fonts/static/#Montserrat"/>
-        </Style>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
@@ -14,6 +11,9 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="Montserrat">
+                <Setter Property="TextElement.FontFamily" Value="/Fonts/static/#Montserrat"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

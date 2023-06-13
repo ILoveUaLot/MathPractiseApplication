@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MathPractiseApplication.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="LoginView" Height="550" Width="800"
         WindowStyle="None"
@@ -142,19 +143,24 @@
                                FontSize="14"
                                FontWeight="Medium"
                                Style="{StaticResource Montserrat}"/>
-                    <TextBox Name="UserName"
+                    <StackPanel Orientation="Horizontal" 
+                                Height="28"
+                                Margin="0,5,0,20">
+                        <materialDesign:PackIcon Kind="User" Width="25" Height="25" Foreground="White"/>
+                        <TextBox Name="UserName"
                              FontSize="14"
-                             Background="Transparent"
                              Foreground="White"
                              CaretBrush="LightGray"
                              BorderBrush="DarkGray"
+                             Background="Transparent"
                              BorderThickness="0,0,0,1"
-                             Height="28"
                              VerticalAlignment="Center"
-                             Margin="0,5,0,20"
-                             Padding="20,0,0,0"
-                             Style="{StaticResource Montserrat}"/>
-                    
+                             Style="{StaticResource Montserrat}"
+                             Width="270"
+                             materialDesign:HintAssist.Hint="Enter username"/>
+                    </StackPanel>
+
+
                     <TextBlock Text="Password"
                                Foreground="DarkGray"
                                FontSize="14"
