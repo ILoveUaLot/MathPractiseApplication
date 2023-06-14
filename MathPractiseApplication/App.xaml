@@ -13,9 +13,8 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <Style x:Key="Montserrat">
-                <Setter Property="TextElement.FontFamily" Value="/Fonts/static/#Montserrat"/>
-            </Style>
+            <FontFamily x:Key="Montserrat">pack://application:,,,/Fonts/static/#Montserrat</FontFamily>
         </ResourceDictionary>
+        
     </Application.Resources>
 </Application>

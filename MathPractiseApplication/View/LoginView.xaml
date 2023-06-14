@@ -51,7 +51,7 @@
                 <TextBlock Text="ВОЙТИ"
                            Foreground="DarkGray"
                            FontSize="18"
-                           Style="{StaticResource Montserrat}"
+                           FontFamily="{StaticResource Montserrat}"
                            Cursor="Hand"
                            VerticalAlignment="Center"
                            Margin="15,0,0,0"/>
@@ -124,7 +124,7 @@
                                Foreground="White"
                                FontSize="25"
                                FontWeight="Medium"
-                               Style="{StaticResource Montserrat}"
+                               FontFamily="{StaticResource Montserrat}"
                                HorizontalAlignment="Center"
                                Margin="0,10,0,15"/>
                     <TextBlock Text="Данное приложение поможет вам познать основы математики"
@@ -134,12 +134,12 @@
                                TextWrapping="Wrap"
                                TextAlignment="Center"
                                Margin="0,0,0,20"
-                               Style="{StaticResource Montserrat}"/>
+                               FontFamily="{StaticResource Montserrat}"/>
                     <TextBlock Text="Username"
                                Foreground="DarkGray"
                                FontSize="14"
                                FontWeight="Medium"
-                               Style="{StaticResource Montserrat}"/>
+                               FontFamily="{StaticResource Montserrat}"/>
                     <StackPanel Orientation="Horizontal" 
                                 Height="28"
                                 Margin="0,5,0,20">
@@ -156,7 +156,7 @@
                              Background="Transparent"
                              BorderThickness="0,0,0,1"
                              VerticalAlignment="Center"
-                             Style="{StaticResource Montserrat}"
+                             FontFamily="{StaticResource Montserrat}"
                              Width="270"
                              Padding="20,0,0,0"
                              />
@@ -166,7 +166,7 @@
                                 Foreground="DarkGray"
                                 FontSize="14"
                                 FontWeight="Medium"
-                                Style="{StaticResource Montserrat}"/>
+                                FontFamily="{StaticResource Montserrat}"/>
                     
                     <StackPanel Orientation="Horizontal"
                                 Height="28"
@@ -185,7 +185,8 @@
                              VerticalAlignment="Center"
                              Width="270"
                              Padding="20,0,0,0"
-                             Style="{StaticResource Montserrat}" ScrollViewer.CanContentScroll="True" Text=""/>
+                             FontFamily="{StaticResource Montserrat}" 
+                             Text=""/>
                     </StackPanel>
                     
                 </StackPanel>
