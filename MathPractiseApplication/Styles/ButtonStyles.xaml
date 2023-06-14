@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes">
     <Style x:Key="menuButton" TargetType="RadioButton">
         <!--Normal style-->
         <Setter Property="Height" Value="50"/>
@@ -40,8 +41,11 @@
     </Style>
 
     <!--Menu button icon-->
-    <Style x:Key="menuButtonIcon">
-        
+    <Style x:Key="menuButtonIcon" TargetType="material:PackIcon">
+        <Setter Property="Foreground" Value="{Binding Path=Tag, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
+        <Setter Property="Width" Value="22"/>
+        <Setter Property="Height" Value="22"/>
+        <Setter Property="Margin" Value="35,0,20,0"/>
     </Style>
     <!--Menu button text-->
     <Style x:Key="menuButtonText" TargetType="TextBlock">
