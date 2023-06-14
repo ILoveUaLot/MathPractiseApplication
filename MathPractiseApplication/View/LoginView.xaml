@@ -25,18 +25,15 @@
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
 
-                    <GradientStop Color="#DD58D6" Offset="0"/>
-                    <GradientStop Color="#DB005B" Offset="0.5"/>
-                    <GradientStop Color="#4942E4" Offset="0.8"/>
+                    <GradientStop Color="{StaticResource WinBorderColor1}" Offset="0"/>
+                    <GradientStop Color="{StaticResource WinBorderColor2}" Offset="0.5"/>
+                    <GradientStop Color="{StaticResource WinBorderColor3}" Offset="0.8"/>
                 </LinearGradientBrush>
             </Border.BorderBrush>
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="#1a0e50" Offset="0.01"/>
-
-
-
-                    <GradientStop Color="#060431" Offset="0.75"/>
+                    <GradientStop Color="{StaticResource PrimaryBackgroundColor1}" Offset="0.01"/>
+                    <GradientStop Color="{StaticResource PrimaryBackgroundColor2}" Offset="0.75"/>
                 </LinearGradientBrush>
             </Border.Background>
             <Grid>
