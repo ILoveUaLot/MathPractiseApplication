@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!--window border colors-->
+    <Color x:Key="WinBorderColor1">#DD58D6</Color>
+    <Color x:Key="WinBorderColor2">#DB005B</Color>
+    <Color x:Key="WinBorderColor3">#4942E4</Color>
+</ResourceDictionary>
