@@ -21,7 +21,11 @@
     <SolidColorBrush x:Key="textColor3" Color="#7376bd"></SolidColorBrush>
     
     <!--Colors-->
-    <Color x:Key="color1">#AF7CEC</Color>
+    <SolidColorBrush x:Key="color1">#AF7CEC</SolidColorBrush>
+    <SolidColorBrush x:Key="color2">#E21818</SolidColorBrush>
+    <SolidColorBrush x:Key="color3">#FFDD83</SolidColorBrush>
+    <SolidColorBrush x:Key="color4">#F85F73</SolidColorBrush>
+    <SolidColorBrush x:Key="color5">#62D2A2</SolidColorBrush>
     <!--Panel colors-->
     <SolidColorBrush x:Key="panelColor" Color="#200f53"/>
     <SolidColorBrush x:Key="overPanelColor" Color="#281269"/>

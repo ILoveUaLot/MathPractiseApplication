@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MathPractiseApplication.View"
+        xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Main" Height="700" Width="1300"
         WindowStyle="None"
@@ -33,7 +34,8 @@
             <!--navigation menu-->
             <Border CornerRadius="10,0,0,10"
                     Grid.Column="0"
-                    BorderThickness="3,3,0,3">
+                    BorderThickness="3,3,0,3"
+                    BorderBrush="Black">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,1" EndPoint="1,07">
                         <GradientStop Color="{StaticResource SecondaryBackgroundColor1}" Offset="0"/>
@@ -62,9 +64,38 @@
                     
                     <!--Menu buttons-->
                     <RadioButton Style="{StaticResource menuButton}"
-                        Tag="{StaticResource color1}">
+                                 Tag="{StaticResource color1}">
                         <StackPanel Orientation="Horizontal">
-                            
+                            <material:PackIcon Style="{StaticResource menuButtonIcon}" Kind="Home"></material:PackIcon>
+                            <TextBlock Text="Главная" Style="{StaticResource menuButtonText}"></TextBlock>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color3}">
+                        <StackPanel Orientation="Horizontal">
+                            <material:PackIcon Style="{StaticResource menuButtonIcon}" Kind="TestTube"></material:PackIcon>
+                            <TextBlock Text="Практика" Style="{StaticResource menuButtonText}"></TextBlock>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color5}">
+                        <StackPanel Orientation="Horizontal">
+                            <material:PackIcon Style="{StaticResource menuButtonIcon}" Kind="Book"></material:PackIcon>
+                            <TextBlock Text="Теория" Style="{StaticResource menuButtonText}"></TextBlock>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color4}">
+                        <StackPanel Orientation="Horizontal">
+                            <material:PackIcon Style="{StaticResource menuButtonIcon}" Kind="AcademicCap"></material:PackIcon>
+                            <TextBlock Text="Тест" Style="{StaticResource menuButtonText}"></TextBlock>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource menuButton}" 
+                                 Tag="{StaticResource color2}">
+                        <StackPanel Orientation="Horizontal" >
+                            <material:PackIcon Style="{StaticResource menuButtonIcon}" Kind="PresenceExit"></material:PackIcon>
+                            <TextBlock Text="Выход" Style="{StaticResource menuButtonText}"></TextBlock>
                         </StackPanel>
                     </RadioButton>
                 </StackPanel>
@@ -73,7 +104,8 @@
             <!--Content menu-->
             <Border CornerRadius="0,10,10,0"
                     Grid.Column="1"
-                    BorderThickness="1">
+                    BorderThickness="0,3,3,3"
+                    BorderBrush="Black">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="{StaticResource PrimaryBackgroundColor1}" Offset="0"/>
