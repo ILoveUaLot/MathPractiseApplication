@@ -4,7 +4,7 @@
     <Style x:Key="menuButton" TargetType="RadioButton">
         <!--Normal style-->
         <Setter Property="Height" Value="50"/>
-        <Setter Property="Margin" Value="-5,0,0,5"/>
+        <Setter Property="Margin" Value="-5,40,0,5"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{StaticResource textColor3}"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
@@ -23,7 +23,7 @@
         <Style.Triggers>
             <!--button hover style-->
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Margin" Value="0,0,0,5"/>
+                <Setter Property="Margin" Value="0,40,0,5"/>
                 <Setter Property="Background" Value="{StaticResource overPanelColor}"/>
                 <Setter Property="Foreground" Value="{StaticResource titleColor3}"/>
                 <Setter Property="BorderBrush" 
@@ -31,7 +31,7 @@
             </Trigger>
             <!--activated button-->
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Margin" Value="0,0,0,5"/>
+                <Setter Property="Margin" Value="0,40,0,5"/>
                 <Setter Property="Background" Value="{StaticResource activePanelColor}"/>
                 <Setter Property="Foreground" Value="{StaticResource titleColor3}"/>
                 <Setter Property="BorderBrush" 
@@ -43,16 +43,16 @@
     <!--Menu button icon-->
     <Style x:Key="menuButtonIcon" TargetType="material:PackIcon">
         <Setter Property="Foreground" Value="{Binding Path=Tag, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
-        <Setter Property="Width" Value="22"/>
-        <Setter Property="Height" Value="22"/>
-        <Setter Property="Margin" Value="35,0,20,0"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Margin" Value="45,0,20,0"/>
     </Style>
     <!--Menu button text-->
     <Style x:Key="menuButtonText" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource Montserrat}"/>
         <Setter Property="FontWeight" Value="Medium" />
-        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontSize" Value="22"/>
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
     </Style>
 </ResourceDictionary>
