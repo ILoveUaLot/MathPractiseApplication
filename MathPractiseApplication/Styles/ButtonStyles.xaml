@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Key="menuButton" TargetType="RadioButton">
+        <!--Normal style-->
         <Setter Property="Height" Value="50"/>
         <Setter Property="Margin" Value="-5,0,0,5"/>
         <Setter Property="Background" Value="Transparent"/>
@@ -19,15 +20,21 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <!--Mouse over-->
+            <!--button hover style-->
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Height" Value="50"/>
                 <Setter Property="Margin" Value="0,0,0,5"/>
                 <Setter Property="Background" Value="{StaticResource overPanelColor}"/>
                 <Setter Property="Foreground" Value="{StaticResource titleColor3}"/>
                 <Setter Property="BorderBrush" 
                         Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}}"/>
-                
+            </Trigger>
+            <!--activated button-->
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Margin" Value="0,0,0,5"/>
+                <Setter Property="Background" Value="{StaticResource activePanelColor}"/>
+                <Setter Property="Foreground" Value="{StaticResource titleColor3}"/>
+                <Setter Property="BorderBrush" 
+                        Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
