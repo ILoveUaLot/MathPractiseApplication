@@ -5,4 +5,18 @@
     <Color x:Key="WinBorderColor1">#DD58D6</Color>
     <Color x:Key="WinBorderColor2">#DB005B</Color>
     <Color x:Key="WinBorderColor3">#4942E4</Color>
+    
+    <!--Background colors-->
+    <Color x:Key="PrimaryBackgroundColor1">#1a0e50</Color>
+    <Color x:Key="PrimaryBackgroundColor2">#060431</Color>
+    <Color x:Key="SecondaryBackgroundColor1">#24105f</Color>
+    <Color x:Key="SecondaryBackgroundColor2">#210f50</Color>
+    
+    <!--Font colors-->
+    <SolidColorBrush x:Key="titleColor1" Color="White"></SolidColorBrush>
+    <SolidColorBrush x:Key="titleColor2" Color="LightGray"></SolidColorBrush>
+    <SolidColorBrush x:Key="titleColor3" Color="DarkGray"></SolidColorBrush>
+    <SolidColorBrush x:Key="textColor1" Color="#9497CD"></SolidColorBrush>
+    <SolidColorBrush x:Key="textColor2" Color="#7c80c2"></SolidColorBrush>
+    <SolidColorBrush x:Key="textColor3" Color="#7376bd"></SolidColorBrush>
 </ResourceDictionary>
