@@ -38,5 +38,14 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
+    <!--Menu button icon-->
+    <Style x:Key="menuButtonIcon">
+        
+    </Style>
+    <!--Menu button text-->
+    <Style x:Key="menuButtonText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat}"/>
+    </Style>
 </ResourceDictionary>
