@@ -112,6 +112,26 @@
                         <GradientStop Color="{StaticResource PrimaryBackgroundColor2}" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <!--Control bar-->
+                        <RowDefinition Height="30"></RowDefinition>
+                        <!--Header/Caption-->
+                        <RowDefinition Height="30"></RowDefinition>
+                        <!--Content-->
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <!--Control bar-->
+                    <StackPanel Name="ControlPanel"
+                                Grid.Row="0"
+                                Orientation="Horizontal"
+                                FlowDirection="LeftToRight"
+                                Background="Transparent"
+                                Margin="0,0,5,0"
+                                MouseLeftButtonDown="ControlPanel_MouseLeftButtonDown"
+                                Cursor="SizeAll"/>
+                </Grid>
             </Border>
             
         </Grid>
