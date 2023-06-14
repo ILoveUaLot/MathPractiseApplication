@@ -5,8 +5,83 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MathPractiseApplication.View"
         mc:Ignorable="d"
-        Title="Main" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Main" Height="700" Width="1300"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True"
+        >
+    <Border
+            CornerRadius="15"
+            BorderThickness="3">
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+
+                <GradientStop Color="{StaticResource WinBorderColor1}" Offset="0"/>
+                <GradientStop Color="{StaticResource WinBorderColor2}" Offset="0.5"/>
+                <GradientStop Color="{StaticResource WinBorderColor3}" Offset="0.8"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <!--navbar-->
+                <ColumnDefinition Width="250"></ColumnDefinition>
+                <!--content section-->
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <!--navigation menu-->
+            <Border CornerRadius="10,0,0,10"
+                    Grid.Column="0"
+                    BorderThickness="3,3,0,3">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,07">
+                        <GradientStop Color="{StaticResource SecondaryBackgroundColor1}" Offset="0"/>
+                        <GradientStop Color="{StaticResource SecondaryBackgroundColor2}" Offset="1"/> 
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <StackPanel Orientation="Vertical">
+                    
+                    <StackPanel Orientation="Horizontal"
+                            Height="50"
+                            Margin="10,10,15,0">
+                        <Ellipse Margin="10,0,0,0" 
+                                 Width="40" 
+                                 Height="40" 
+                                 Fill="Blue"/>
+                        <TextBlock Text="Username"
+                                   FontSize="24"
+                                   FontWeight="Medium"
+                                   VerticalAlignment="Center"
+                                   Margin="10,0,0,0"
+                                   Foreground="{StaticResource titleColor2}">
+                            
+                        </TextBlock>
+                    </StackPanel>
+                    
+                    <!--Menu buttons-->
+                    <RadioButton Style="{StaticResource menuButton}"
+                        Tag="{StaticResource color1}">
+                        <StackPanel Orientation="Horizontal">
+                            
+                        </StackPanel>
+                    </RadioButton>
+                </StackPanel>
+            </Border>
+            
+            <!--Content menu-->
+            <Border CornerRadius="0,10,10,0"
+                    Grid.Column="1"
+                    BorderThickness="1">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="{StaticResource PrimaryBackgroundColor1}" Offset="0"/>
+                        <GradientStop Color="{StaticResource PrimaryBackgroundColor2}" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+            
+        </Grid>
+    </Border>
 </Window>
