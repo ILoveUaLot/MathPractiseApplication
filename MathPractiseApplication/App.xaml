@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:MathPractiseApplication"
              StartupUri="View/LoginView.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="Styles/UIColors.xaml"></ResourceDictionary>
     </Application.Resources>
 </Application>
