@@ -153,6 +153,10 @@
                             <material:PackIcon Kind="WindowMinimize"/>
                         </Button>
                     </StackPanel>
+
+                    <ContentControl Content=""
+                                    Grid.Row="2"
+                                    Margin="25"></ContentControl>
                 </Grid>
             </Border>
             
