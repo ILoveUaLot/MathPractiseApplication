@@ -26,6 +26,7 @@
     <SolidColorBrush x:Key="color3">#FFDD83</SolidColorBrush>
     <SolidColorBrush x:Key="color4">#F85F73</SolidColorBrush>
     <SolidColorBrush x:Key="color5">#62D2A2</SolidColorBrush>
+    <SolidColorBrush x:Key="color6">#CE0071</SolidColorBrush>
     <!--Panel colors-->
     <SolidColorBrush x:Key="panelColor" Color="#200f53"/>
     <SolidColorBrush x:Key="overPanelColor" Color="#281269"/>

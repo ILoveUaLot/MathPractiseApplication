@@ -126,11 +126,33 @@
                     <StackPanel Name="ControlPanel"
                                 Grid.Row="0"
                                 Orientation="Horizontal"
-                                FlowDirection="LeftToRight"
+                                FlowDirection="RightToLeft"
                                 Background="Transparent"
                                 Margin="0,0,5,0"
                                 MouseLeftButtonDown="ControlPanel_MouseLeftButtonDown"
-                                Cursor="SizeAll"/>
+                                Cursor="SizeAll">
+                        <Button Name="Closebtn"
+                                Style="{StaticResource controlButton}"
+                                Tag="{StaticResource color6}"
+                                Click="Closebtn_Click"
+                                Cursor="Hand">
+                            <material:PackIcon Kind="WindowClose"/>
+                        </Button>
+                        <Button Name="MaximazeBtn"
+                                Style="{StaticResource controlButton}"
+                                Tag="{StaticResource color5}"
+                                Click="MaximazeBtn_Click"
+                                Cursor="Hand">
+                            <material:PackIcon Kind="WindowMaximize"/>
+                        </Button>
+                        <Button Name="MinimazeBtn"
+                                Style="{StaticResource controlButton}"
+                                Tag="{StaticResource color4}"
+                                Click="MinimazeBtn_Click"
+                                Cursor="Hand">
+                            <material:PackIcon Kind="WindowMinimize"/>
+                        </Button>
+                    </StackPanel>
                 </Grid>
             </Border>
             

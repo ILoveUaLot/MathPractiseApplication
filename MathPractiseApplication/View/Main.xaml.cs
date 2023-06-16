@@ -34,5 +34,23 @@ namespace MathPractiseApplication.View
             WindowInteropHelper helper = new WindowInteropHelper(this);
             SendMessage(helper.Handle, 161, 2, 0);
         }
+
+        private void Closebtn_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void MaximazeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Normal)
+                WindowState = WindowState.Maximized;
+            else 
+                WindowState = WindowState.Normal;
+        }
+
+        private void MinimazeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
     }
 }
