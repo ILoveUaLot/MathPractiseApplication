@@ -16,30 +16,29 @@
                       Foreground="white">
                 <StackPanel Orientation="Horizontal" Height="300">
                     
-                    <Border Name="Mask" Style="{StaticResource contentBorder}" Width="250">
+                    <Border Style="{StaticResource contentBorder}" Width="250">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="50">
-                                    
+
                                 </RowDefinition>
                                 <RowDefinition>
-                                    
+
                                 </RowDefinition>
                             </Grid.RowDefinitions>
                             <Border Grid.Row="0" Style="{StaticResource HeaderContentBorder}">
                                 <TextBlock Style="{StaticResource HeaderContentText}" 
                                            Text="Линейные уравнения"></TextBlock>
                             </Border>
-                            
-                                <Image Grid.Row="1" Stretch="Fill" Source="/Images/Background.png" Opacity="0.7"/>
-                           
-                            
-                                <materialDesign:PackIcon Grid.Row="1"
+                            <Border Grid.Row="1" CornerRadius="0,0,20,20">
+                                <Border.Background>
+                                    <ImageBrush Stretch="Fill" ImageSource="/Images/Background.png" Opacity="0.7"/>
+                                </Border.Background>
+                            </Border>
+                            <materialDesign:PackIcon Grid.Row="1"
                                                      Style="{StaticResource ContentImgInfo}"
                                                      ></materialDesign:PackIcon>
                         </Grid>
-                        
-                        
                     </Border>
 
                     <Border Style="{StaticResource contentBorder}" Width="250">
@@ -54,22 +53,77 @@
                             </Grid.RowDefinitions>
                             <Border Grid.Row="0" Style="{StaticResource HeaderContentBorder}">
                                 <TextBlock Style="{StaticResource HeaderContentText}" 
-                                           Text="Свойства функций "></TextBlock>
+                                           Text="Свойства функций"></TextBlock>
                             </Border>
-                            <Image Stretch="Fill"  Grid.Row="1" Source="/Images/Background.png" Opacity="0.7"/>
+                            <Border Grid.Row="1" CornerRadius="0,0,20,20">
+                                <Border.Background>
+                                    <ImageBrush Stretch="Fill" ImageSource="/Images/Background.png" Opacity="0.7"/>
+                                </Border.Background>
+                            </Border>
                             <materialDesign:PackIcon Grid.Row="1"
                                                      Style="{StaticResource ContentImgInfo}"
                                                      ></materialDesign:PackIcon>
                         </Grid>
-
-
                     </Border>
                 </StackPanel>
             </Expander>
             <Expander Style="{DynamicResource MaterialDesignExpander}"
                       Header="Решение системы уравнений"
                       Background="transparent"
-                      Foreground="white"></Expander>
+                      Foreground="white">
+                <StackPanel Orientation="Horizontal" Height="300">
+
+                    <Border Style="{StaticResource contentBorder}" Width="250">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50">
+
+                                </RowDefinition>
+                                <RowDefinition>
+
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" Style="{StaticResource HeaderContentBorder}">
+                                <TextBlock Style="{StaticResource HeaderContentText}" 
+                                           Text="Система линейного уравнения" TextWrapping="Wrap"></TextBlock>
+                            </Border>
+                            <Border Grid.Row="1" CornerRadius="0,0,20,20">
+                                <Border.Background>
+                                    <ImageBrush Stretch="Fill" ImageSource="/Images/Background.png" Opacity="0.7"/>
+                                </Border.Background>
+                            </Border>
+                            <materialDesign:PackIcon Grid.Row="1"
+                                                     Style="{StaticResource ContentImgInfo}"
+                                                     ></materialDesign:PackIcon>
+                        </Grid>
+                    </Border>
+
+                    <Border Style="{StaticResource contentBorder}" Width="250">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50">
+
+                                </RowDefinition>
+                                <RowDefinition>
+
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" Style="{StaticResource HeaderContentBorder}">
+                                <TextBlock Style="{StaticResource HeaderContentText}" 
+                                           Text="Методы решения"></TextBlock>
+                            </Border>
+                            <Border Grid.Row="1" CornerRadius="0,0,20,20">
+                                <Border.Background>
+                                    <ImageBrush Stretch="Fill" ImageSource="/Images/Background.png" Opacity="0.7"/>
+                                </Border.Background>
+                            </Border>
+                            <materialDesign:PackIcon Grid.Row="1"
+                                                     Style="{StaticResource ContentImgInfo}"
+                                                     ></materialDesign:PackIcon>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </Expander>
         </StackPanel>
         
     </Grid>
