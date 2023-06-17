@@ -37,4 +37,14 @@
         <Setter Property="CornerRadius" Value="20"/>
         <Setter Property="Background" Value="{StaticResource color5}"/>
     </Style>
+
+    <Style x:Key="ContentImgInfo" TargetType="material:PackIcon">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource color3}"/>
+        <Setter Property="Kind" Value="InformationCircle"/>
+        <Setter Property="Width" Value="150" />
+        <Setter Property="Height" Value="150" />
+    </Style>
+  
 </ResourceDictionary>
