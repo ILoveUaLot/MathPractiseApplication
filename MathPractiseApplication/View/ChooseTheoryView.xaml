@@ -6,14 +6,65 @@
              xmlns:local="clr-namespace:MathPractiseApplication.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-    xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf">
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             >
     <Grid>
         <StackPanel Orientation="Vertical">
             <Expander Style="{DynamicResource MaterialDesignExpander}"
                       Header="Решение уравнений"
                       Background="transparent"
                       Foreground="white">
-                
+                <StackPanel Orientation="Horizontal" Height="300">
+                    
+                    <Border Name="Mask" Style="{StaticResource contentBorder}" Width="250">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50">
+                                    
+                                </RowDefinition>
+                                <RowDefinition>
+                                    
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" Style="{StaticResource HeaderContentBorder}">
+                                <TextBlock Style="{StaticResource HeaderContentText}" 
+                                           Text="Линейные уравнения"></TextBlock>
+                            </Border>
+                            
+                                <Image Grid.Row="1" Stretch="Fill" Source="/Images/Background.png" Opacity="0.7"/>
+                           
+                            
+                                <materialDesign:PackIcon Grid.Row="1"
+                                                     Style="{StaticResource ContentImgInfo}"
+                                                     ></materialDesign:PackIcon>
+                        </Grid>
+                        
+                        
+                    </Border>
+
+                    <Border Style="{StaticResource contentBorder}" Width="250">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50">
+
+                                </RowDefinition>
+                                <RowDefinition>
+
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" Style="{StaticResource HeaderContentBorder}">
+                                <TextBlock Style="{StaticResource HeaderContentText}" 
+                                           Text="Свойства функций "></TextBlock>
+                            </Border>
+                            <Image Stretch="Fill"  Grid.Row="1" Source="/Images/Background.png" Opacity="0.7"/>
+                            <materialDesign:PackIcon Grid.Row="1"
+                                                     Style="{StaticResource ContentImgInfo}"
+                                                     ></materialDesign:PackIcon>
+                        </Grid>
+
+
+                    </Border>
+                </StackPanel>
             </Expander>
             <Expander Style="{DynamicResource MaterialDesignExpander}"
                       Header="Решение системы уравнений"
