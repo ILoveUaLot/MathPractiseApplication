@@ -18,65 +18,28 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Border Grid.Row="0" Grid.Column="0"
-                CornerRadius="20" Margin="20"
+                Style="{StaticResource contentBorder}"
                 >
-            <Border.Background>
-                <SolidColorBrush Color="{StaticResource ContentElementBackground}" Opacity="0.33"></SolidColorBrush>
-            </Border.Background>
-            <Border BorderBrush="{StaticResource MaterialDesignDarkBackground}"
-                    BorderThickness="0,0,0,2"
-                    Height="50"
-                    VerticalAlignment="Top">
-                <TextBlock FontSize="18"
-                           FontWeight="Medium"
-                           FontFamily="{StaticResource Montserrat}"
-                           Foreground="White"
-                           TextAlignment="Center"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
+            <Border Style="{StaticResource HeaderContentBorder}">
+                <TextBlock Style="{StaticResource HeaderContentText}"
                            Text="Последний результат"></TextBlock>
             </Border>
         </Border>
 
         <Border Grid.Row="0" Grid.Column="1"
-                CornerRadius="20" Margin="20"
-                >
-            <Border.Background>
-                <SolidColorBrush Color="{StaticResource ContentElementBackground}" Opacity="0.33"></SolidColorBrush>
-            </Border.Background>
-            <Border BorderBrush="{StaticResource MaterialDesignDarkBackground}"
-                    BorderThickness="0,0,0,2"
-                    Height="50"
-                    VerticalAlignment="Top">
-                <TextBlock FontSize="18"
-                           FontWeight="Medium"
-                           FontFamily="{StaticResource Montserrat}"
-                           Foreground="White"
-                           TextAlignment="Center"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
+                Style="{StaticResource contentBorder}">
+            <Border Style="{StaticResource HeaderContentBorder}">
+                <TextBlock Style="{StaticResource HeaderContentText}"
                            Text="Практика"></TextBlock>
             </Border>
         </Border>
 
         <Border Grid.Row="0" Grid.Column="2"
                 Grid.RowSpan="2"
-                CornerRadius="20" Margin="20"
+                Style="{StaticResource contentBorder}"
                 >
-            <Border.Background>
-                <SolidColorBrush Color="{StaticResource ContentElementBackground}" Opacity="0.33"></SolidColorBrush>
-            </Border.Background>
-            <Border BorderBrush="{StaticResource MaterialDesignDarkBackground}"
-                    BorderThickness="0,0,0,2"
-                    Height="50"
-                    VerticalAlignment="Top">
-                <TextBlock FontSize="18"
-                           FontWeight="Medium"
-                           FontFamily="{StaticResource Montserrat}"
-                           Foreground="White"
-                           TextAlignment="Center"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
+            <Border Style="{StaticResource HeaderContentBorder}">
+                <TextBlock Style="{StaticResource HeaderContentText}"
                            Text="Статистика"></TextBlock>
             </Border>
         </Border>
