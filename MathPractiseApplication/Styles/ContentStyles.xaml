@@ -15,16 +15,26 @@
         <Setter Property="BorderThickness" Value="0,0,0,2"/>
         <Setter Property="Height" Value="50"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
-        <Setter Property="BorderBrush" Value="{StaticResource MaterialDesignDarkBackground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource MaterialDesignDarkBackground}"/>
     </Style>
 
     <Style x:Key="HeaderContentText" TargetType="TextBlock">
         <Setter Property="FontSize" Value="18"></Setter>
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource Montserrat}"/>
         <Setter Property="FontWeight" Value="Medium"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="AnswerBorder" TargetType="Border">
+        <Setter Property="Height" Value="80"/>
+        <Setter Property="Width" Value="400"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="Background" Value="{StaticResource color5}"/>
     </Style>
 </ResourceDictionary>
