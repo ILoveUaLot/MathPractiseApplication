@@ -85,7 +85,7 @@
                             </Grid.RowDefinitions>
                             <Border Grid.Row="0" Style="{StaticResource HeaderContentBorder}">
                                 <TextBlock Style="{StaticResource HeaderContentText}" 
-                                           Text="Система линейного уравнения" TextWrapping="Wrap"></TextBlock>
+                                           Text="Система линейных уравнений" TextWrapping="Wrap"></TextBlock>
                             </Border>
                             <Border Grid.Row="1" CornerRadius="0,0,20,20">
                                 <Border.Background>
