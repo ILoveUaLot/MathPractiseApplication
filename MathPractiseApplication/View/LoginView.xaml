@@ -175,7 +175,7 @@
                                                  Foreground ="White"
                                                  Height="25"
                                                  Width="25"/>
-                        <TextBox Name="UserPassword"
+                        <PasswordBox Name="UserPassword"
                              FontSize="14"
                              Background="Transparent"
                              Foreground="White"
@@ -186,7 +186,7 @@
                              Width="270"
                              Padding="20,0,0,0"
                              FontFamily="{StaticResource Montserrat}" 
-                             Text=""/>
+                             />
                     </StackPanel>
                     
                 </StackPanel>
