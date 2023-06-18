@@ -23,5 +23,20 @@ namespace MathPractiseApplication.View
         {
             InitializeComponent();
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void Minimazebtn_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState= WindowState.Minimized;
+        }
+
+        private void Closebtn_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
