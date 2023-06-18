@@ -47,15 +47,25 @@
                     <ColumnDefinition Width="25"/>
                     <ColumnDefinition Width="15"/>
                 </Grid.ColumnDefinitions>
-
-                <TextBlock Text="ВОЙТИ"
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="ВОЙТИ"
                            Foreground="DarkGray"
                            FontSize="18"
                            FontFamily="{StaticResource Montserrat}"
                            Cursor="Hand"
                            VerticalAlignment="Center"
-                           Margin="15,0,0,0"/>
+                           Margin="20,0,0,0"/>
+                    <TextBlock Text="ЗАРЕГИСТРИРОВАТЬСЯ"
+                           Foreground="DarkGray"
+                           FontSize="18"
+                           FontFamily="{StaticResource Montserrat}"
+                           Cursor="Hand"
+                           VerticalAlignment="Center"
+                           Margin="30,0,0,0">
 
+                    </TextBlock>
+                </StackPanel>
+                
                 <Button
                     x:Name="Minimazebtn"
                     Grid.Column="1"
