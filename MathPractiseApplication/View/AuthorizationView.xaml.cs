@@ -15,30 +15,13 @@ using System.Windows.Shapes;
 namespace MathPractiseApplication.View
 {
     /// <summary>
-    /// Interaction logic for LoginView.xaml
+    /// Interaction logic for AuthorizationView.xaml
     /// </summary>
-    public partial class LoginView : Window
+    public partial class AuthorizationView : Window
     {
-        public LoginView()
+        public AuthorizationView()
         {
             InitializeComponent();
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-                DragMove();
-            
-        }
-
-        private void Minimazebtn_Click(object sender, RoutedEventArgs e)
-        {
-            WindowState= WindowState.Minimized;
-        }
-
-        private void Closebtn_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }
