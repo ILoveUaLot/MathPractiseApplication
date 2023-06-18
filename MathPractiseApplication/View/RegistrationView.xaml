@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="MathPractiseApplication.View.RegistrationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MathPractiseApplication.View"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="550" d:DesignWidth="300">
+    <StackPanel Width="300"
+                Orientation="Vertical">
+
+        <Image Width="150" Height="150" Source="../Images/MathIcon.png"/>
+        <TextBlock Text="MATHPRACTISE"
+                               Foreground="White"
+                               FontSize="25"
+                               FontWeight="Medium"
+                               FontFamily="{StaticResource Montserrat}"
+                               HorizontalAlignment="Center"
+                               Margin="0,10,0,15"/>
+        <TextBlock Text="Данное приложение поможет вам познать основы математики"
+                               Foreground="LightGray"
+                               FontSize="14"
+                               FontWeight="Medium"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"
+                               Margin="0,0,0,20"
+                               FontFamily="{StaticResource Montserrat}"/>
+        <TextBlock Text="Имя пользователя"
+                               Foreground="DarkGray"
+                               FontSize="14"
+                               FontWeight="Medium"
+                               FontFamily="{StaticResource Montserrat}"/>
+        <StackPanel Orientation="Horizontal" 
+                                Height="28"
+                                Margin="0,5,0,20">
+            <materialDesign:PackIcon Kind="User" 
+                                        Width="25" 
+                                        Height="25" 
+                                        Foreground="White"
+                                                 />
+            <TextBox Name="UserName"
+                             FontSize="14"
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             Background="Transparent"
+                             BorderThickness="0,0,0,1"
+                             VerticalAlignment="Center"
+                             FontFamily="{StaticResource Montserrat}"
+                             Width="270"
+                             Padding="20,0,0,0"
+                             />
+        </StackPanel>
+
+        <TextBlock Text="Пароль"
+                                Foreground="DarkGray"
+                                FontSize="14"
+                                FontWeight="Medium"
+                                FontFamily="{StaticResource Montserrat}"/>
+
+        <StackPanel Orientation="Horizontal"
+                                Height="28"
+                                Margin="0,5,0,20">
+            <materialDesign:PackIcon Kind="Key"
+                                                 Foreground ="White"
+                                                 Height="25"
+                                                 Width="25"/>
+            <PasswordBox Name="UserPassword"
+                             FontSize="14"
+                             Background="Transparent"
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,1"
+                             VerticalAlignment="Center"
+                             Width="270"
+                             Padding="20,0,0,0"
+                             FontFamily="{StaticResource Montserrat}" 
+                             />
+        </StackPanel>
+
+        <TextBlock Text="Повторите пароль"
+                                Foreground="DarkGray"
+                                FontSize="14"
+                                FontWeight="Medium"
+                                FontFamily="{StaticResource Montserrat}"/>
+        <StackPanel Orientation="Horizontal"
+                                Height="28"
+                                Margin="0,5,0,20">
+            <materialDesign:PackIcon Kind="Password"
+                                                 Foreground ="White"
+                                                 Height="25"
+                                                 Width="25"/>
+            <PasswordBox Name="RepeatedPassword"
+                             FontSize="14"
+                             Background="Transparent"
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,1"
+                             VerticalAlignment="Center"
+                             Width="270"
+                             Padding="20,0,0,0"
+                             FontFamily="{StaticResource Montserrat}" 
+                             />
+        </StackPanel>
+        <Button Width="200" 
+                Content="Зарегистрироваться"
+                FontFamily="{StaticResource Montserrat}"/>
+    </StackPanel>
+</UserControl>
