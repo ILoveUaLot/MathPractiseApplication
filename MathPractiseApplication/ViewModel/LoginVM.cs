@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MathPractiseApplication.Models;
+using MathPractiseApplication.Repositories;
+using System;
 using System.Windows.Input;
 
 namespace MathPractiseApplication.ViewModel
@@ -10,6 +12,13 @@ namespace MathPractiseApplication.ViewModel
         private string _errorMessage;
         private bool _isViewVisible = true;
 
+        private IUserRepository userRepository;
+
+        public LoginVM()
+        {
+            userRepository = new UserExcelRepository();
+            LoginCommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
+        }
         public string Username
         {
             get { return _username; }
@@ -51,10 +60,7 @@ namespace MathPractiseApplication.ViewModel
         public ICommand LoginCommand { get; }
         public ICommand ShowPassword { get; }
 
-        public LoginVM()
-        {
-            LoginCommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
-        }
+        
 
         private bool CanExecuteLoginCommand(object obj)
         {
@@ -66,7 +72,15 @@ namespace MathPractiseApplication.ViewModel
 
         private void ExecuteLoginCommand(object obj)
         {
-            
+            var isValidUser = userRepository.AuthenticateUser(new System.Net.NetworkCredential(Username,Password));
+            if (isValidUser)
+            {
+                IsViewVisible= false;
+            }
+            else
+            {
+                ErrorMessage = "Invalid username or password";
+            }
         }
     }
 }
