@@ -4,10 +4,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MathPractiseApplication.View"
+             xmlns:viewModel="clr-namespace:MathPractiseApplication.ViewModel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:customcontrols="clr-namespace:MathPractiseApplication.CustomControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
-    
+    <UserControl.DataContext>
+        <viewModel:LoginVM/>
+    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"></BooleanToVisibilityConverter>
+    </UserControl.Resources>
+    <UserControl.Visibility>
+        <Binding Path="IsViewVisible" Mode="TwoWay" Converter="{StaticResource BooleanToVisibility}"/>
+    </UserControl.Visibility>
     <StackPanel Width="300"
                 Orientation="Vertical">
 
@@ -41,8 +52,9 @@
                                         Foreground="White"
                                                  />
             <TextBox Name="UserName"
-                             FontSize="14"
-                             Foreground="White"
+                     Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                     FontSize="14"
+                     Foreground="White"
                              CaretBrush="LightGray"
                              BorderBrush="DarkGray"
                              Background="Transparent"
@@ -67,18 +79,12 @@
                                                  Foreground ="White"
                                                  Height="25"
                                                  Width="25"/>
-            <PasswordBox Name="UserPassword"
-                             FontSize="14"
-                             Background="Transparent"
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,1"
-                             VerticalAlignment="Center"
-                             Width="270"
-                             Padding="20,0,0,0"
-                             FontFamily="{StaticResource Montserrat}" 
-                             />
+            <customcontrols:BindablePasswordBox Password="{Binding Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
+        <Button Name="btnSignIn"
+                Command="{Binding LoginCommand}"
+                Width="100" 
+                Content="Войти"
+                FontFamily="{StaticResource Montserrat}"/>
     </StackPanel>
 </UserControl>
