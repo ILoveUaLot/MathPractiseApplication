@@ -15,14 +15,13 @@ namespace MathPractiseApplication.Repositories
         ExcelPackage userPackage;
         string filePath = Path.Combine(Environment.CurrentDirectory,"Data","Users.xlsx");
 
-        public UserExcelRepository(string filepath)
+        public UserExcelRepository()
         {
-            filePath = filepath;
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
-            if (File.Exists(filepath))
+            if (File.Exists(filePath))
             {
-                userPackage = new ExcelPackage(new FileInfo(filepath));
+                userPackage = new ExcelPackage(new FileInfo(filePath));
             }
             else
             {
@@ -31,7 +30,7 @@ namespace MathPractiseApplication.Repositories
                 worksheetUsers.Cells[1, 1].Value = "Id";
                 worksheetUsers.Cells[1, 2].Value = "Name";
                 worksheetUsers.Cells[1, 3].Value = "Password";
-                userPackage.SaveAs(new FileInfo(filepath));
+                userPackage.SaveAs(new FileInfo(filePath));
             }
         }
 
