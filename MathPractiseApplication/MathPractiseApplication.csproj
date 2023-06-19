@@ -19,9 +19,11 @@
 
   <ItemGroup>
     <Folder Include="Fonts\" />
+    <Folder Include="Data\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="EPPlus" Version="6.2.6" />
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
   </ItemGroup>
 </Project>
