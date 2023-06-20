@@ -1,7 +1,10 @@
 ﻿using MathPractiseApplication.Models;
 using MathPractiseApplication.Repositories;
+using MathPractiseApplication.View;
 using System;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace MathPractiseApplication.ViewModel
 {
@@ -10,7 +13,7 @@ namespace MathPractiseApplication.ViewModel
         private string _username;
         private string _password;
         private string _errorMessage;
-        private bool _isViewVisible = true;
+        private DependencyObject _parent;
 
         private IUserRepository userRepository;
 
@@ -35,15 +38,6 @@ namespace MathPractiseApplication.ViewModel
             {
                 _password = value;
                 OnPropertyChanged(nameof(Password));
-            }
-        }
-        public bool IsViewVisible
-        {
-            get => _isViewVisible; 
-            set
-            {
-                _isViewVisible = value;
-                OnPropertyChanged(nameof(IsViewVisible));
             }
         }
 
@@ -72,15 +66,15 @@ namespace MathPractiseApplication.ViewModel
 
         private void ExecuteLoginCommand(object obj)
         {
-            var isValidUser = userRepository.AuthenticateUser(new System.Net.NetworkCredential(Username,Password));
-            if (isValidUser)
-            {
-                IsViewVisible= false;
-            }
-            else
-            {
-                ErrorMessage = "Invalid username or password";
-            }
+            //var isValidUser = userRepository.AuthenticateUser(new System.Net.NetworkCredential(Username,Password));
+            //if (isValidUser)
+            //{
+            //    IsViewVisible= false;
+            //}
+            //else
+            //{
+            //    ErrorMessage = "Invalid username or password";
+            //}
         }
     }
 }
