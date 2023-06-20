@@ -18,13 +18,14 @@
         <viewModel:AuthorizationViewModel/>
     </Window.DataContext>
     <Window.Resources>
-        <DataTemplate DataType="{x:Type viewModel:LoginVM}">
-            <local:LoginView></local:LoginView>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModel:RegisterViewModel}">
-            <local:RegistrationView></local:RegistrationView>
-        </DataTemplate>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"></BooleanToVisibilityConverter>
     </Window.Resources>
+    <Window.Visibility>
+        <Binding ElementName="AuthForm"
+                 Path="Visibility"
+                 Mode="TwoWay"
+                 ></Binding>
+    </Window.Visibility>
     <Border CornerRadius="40">
         <Border.Background>
             <ImageBrush ImageSource="../Images/Background.png" Stretch="Fill"/>
@@ -148,10 +149,15 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <ContentControl Content="{Binding CurentChildView}"
+
+                <ContentControl Name="AuthForm"
+                    Content="{Binding CurentChildView}"
                                 Grid.Row="2"
                                 Grid.ColumnSpan="4"
-                                Margin="0,30,0,0"></ContentControl>
+                                Margin="0,30,0,0"
+                                Visibility="{Binding CurentChildView.Visibility}">
+
+                </ContentControl>
                
             </Grid>
         </Border>
