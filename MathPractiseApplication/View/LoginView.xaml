@@ -8,7 +8,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:customcontrols="clr-namespace:MathPractiseApplication.CustomControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="300">
+             d:DesignHeight="600" d:DesignWidth="300">
     <UserControl.DataContext>
         <viewModel:LoginVM/>
     </UserControl.DataContext>
@@ -62,7 +62,7 @@
                              VerticalAlignment="Center"
                              FontFamily="{StaticResource Montserrat}"
                              Width="270"
-                             Padding="20,0,0,0"
+                             Padding="5,0,0,0"
                              />
         </StackPanel>
 
@@ -74,7 +74,7 @@
 
         <StackPanel Orientation="Horizontal"
                                 Height="28"
-                                Margin="0,5,0,20">
+                                Margin="0,5,0,50">
             <materialDesign:PackIcon Kind="Key"
                                                  Foreground ="White"
                                                  Height="25"
