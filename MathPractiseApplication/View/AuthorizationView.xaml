@@ -4,15 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MathPractiseApplication.View"
+        xmlns:viewModel="clr-namespace:MathPractiseApplication.ViewModel"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="LoginView" Height="550" Width="800"
+        Title="LoginView" Height="600" Width="800"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
         AllowsTransparency="True"
         MouseDown="Window_MouseDown">
+    <Window.DataContext>
+        <viewModel:AuthorizationViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModel:LoginVM}">
+            <local:LoginView></local:LoginView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:RegisterViewModel}">
+            <local:RegistrationView></local:RegistrationView>
+        </DataTemplate>
+    </Window.Resources>
     <Border CornerRadius="40">
         <Border.Background>
             <ImageBrush ImageSource="../Images/Background.png" Stretch="Fill"/>
@@ -38,7 +50,7 @@
             </Border.Background>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="40"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -48,22 +60,34 @@
                     <ColumnDefinition Width="15"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="ВОЙТИ"
+                    <RadioButton Style="{StaticResource authButton}"
+                                 Tag="{StaticResource color4}"
+                                 IsChecked="True"
+                                 Command="{Binding ShowLoginViewCommand}">
+                        <TextBlock Text="ВОЙТИ"
+                               
                            Foreground="DarkGray"
                            FontSize="18"
                            FontFamily="{StaticResource Montserrat}"
                            Cursor="Hand"
                            VerticalAlignment="Center"
-                           Margin="20,0,0,0"/>
-                    <TextBlock Text="ЗАРЕГИСТРИРОВАТЬСЯ"
+                           />
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource authButton}"
+                                 Tag="{StaticResource color4}"
+                                 Command="{Binding ShowRegisterViewCommand}">
+                        <TextBlock Text="ЗАРЕГИСТРИРОВАТЬСЯ"
                            Foreground="DarkGray"
                            FontSize="18"
                            FontFamily="{StaticResource Montserrat}"
                            Cursor="Hand"
                            VerticalAlignment="Center"
-                           Margin="30,0,0,0">
+                           >
 
-                    </TextBlock>
+                        </TextBlock>
+                    </RadioButton>
+                    
+                   
                 </StackPanel>
 
                 <Button
@@ -124,82 +148,11 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <StackPanel Width="300"
-                            Grid.Row="2"
-                            Orientation="Vertical"
-                            Margin="0,35,0,0">
-
-                    <Image Width="150" Height="150" Source="../Images/MathIcon.png"/>
-                    <TextBlock Text="MATHPRACTISE"
-                               Foreground="White"
-                               FontSize="25"
-                               FontWeight="Medium"
-                               FontFamily="{StaticResource Montserrat}"
-                               HorizontalAlignment="Center"
-                               Margin="0,10,0,15"/>
-                    <TextBlock Text="Данное приложение поможет вам познать основы математики"
-                               Foreground="LightGray"
-                               FontSize="14"
-                               FontWeight="Medium"
-                               TextWrapping="Wrap"
-                               TextAlignment="Center"
-                               Margin="0,0,0,20"
-                               FontFamily="{StaticResource Montserrat}"/>
-                    <TextBlock Text="Имя пользователя"
-                               Foreground="DarkGray"
-                               FontSize="14"
-                               FontWeight="Medium"
-                               FontFamily="{StaticResource Montserrat}"/>
-                    <StackPanel Orientation="Horizontal" 
-                                Height="28"
-                                Margin="0,5,0,20">
-                        <materialDesign:PackIcon Kind="User" 
-                                                 Width="25" 
-                                                 Height="25" 
-                                                 Foreground="White"
-                                                 />
-                        <TextBox Name="UserName"
-                             FontSize="14"
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="DarkGray"
-                             Background="Transparent"
-                             BorderThickness="0,0,0,1"
-                             VerticalAlignment="Center"
-                             FontFamily="{StaticResource Montserrat}"
-                             Width="270"
-                             Padding="20,0,0,0"
-                             />
-                    </StackPanel>
-
-                    <TextBlock Text="Пароль"
-                                Foreground="DarkGray"
-                                FontSize="14"
-                                FontWeight="Medium"
-                                FontFamily="{StaticResource Montserrat}"/>
-
-                    <StackPanel Orientation="Horizontal"
-                                Height="28"
-                                Margin="0,5,0,20">
-                        <materialDesign:PackIcon Kind="Key"
-                                                 Foreground ="White"
-                                                 Height="25"
-                                                 Width="25"/>
-                        <PasswordBox Name="UserPassword"
-                             FontSize="14"
-                             Background="Transparent"
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,1"
-                             VerticalAlignment="Center"
-                             Width="270"
-                             Padding="20,0,0,0"
-                             FontFamily="{StaticResource Montserrat}" 
-                             />
-                    </StackPanel>
-
-                </StackPanel>
+                <ContentControl Content="{Binding CurentChildView}"
+                                Grid.Row="2"
+                                Grid.ColumnSpan="4"
+                                Margin="0,30,0,0"></ContentControl>
+               
             </Grid>
         </Border>
     </Border>
