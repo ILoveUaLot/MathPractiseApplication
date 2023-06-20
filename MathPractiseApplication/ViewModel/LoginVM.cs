@@ -13,7 +13,8 @@ namespace MathPractiseApplication.ViewModel
         private string _username;
         private string _password;
         private string _errorMessage;
-        private DependencyObject _parent;
+        private bool _isViewVisible = true;
+
 
         private IUserRepository userRepository;
 
@@ -21,6 +22,16 @@ namespace MathPractiseApplication.ViewModel
         {
             userRepository = new UserExcelRepository();
             LoginCommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
+        }
+
+        public bool IsViewVisible
+        {
+            get => _isViewVisible; 
+            set
+            {
+                _isViewVisible = value;
+                OnPropertyChanged(nameof(IsViewVisible));
+            }
         }
         public string Username
         {
@@ -53,7 +64,6 @@ namespace MathPractiseApplication.ViewModel
 
         public ICommand LoginCommand { get; }
         public ICommand ShowPassword { get; }
-
         
 
         private bool CanExecuteLoginCommand(object obj)
@@ -66,6 +76,7 @@ namespace MathPractiseApplication.ViewModel
 
         private void ExecuteLoginCommand(object obj)
         {
+            IsViewVisible = false;
             //var isValidUser = userRepository.AuthenticateUser(new System.Net.NetworkCredential(Username,Password));
             //if (isValidUser)
             //{
