@@ -13,7 +13,7 @@ namespace MathPractiseApplication.Repositories
     public class UserExcelRepository : IUserRepository
     {
         ExcelPackage userPackage;
-        string filePath = Path.Combine(Environment.CurrentDirectory,"Data","Users.xlsx");
+        string filePath = Path.Combine(Environment.CurrentDirectory,"Data");
 
         public UserExcelRepository()
         {
