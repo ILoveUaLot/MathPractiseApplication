@@ -46,7 +46,8 @@ namespace MathPractiseApplication.ViewModel
         private bool CanExecuteRegistrationCommand(object parameter)
         {
             bool validData = true;
-            if (string.IsNullOrWhiteSpace(Username) || Password == null || Password.Length < 3)
+            if (string.IsNullOrWhiteSpace(Username) || Password == null || Password.Length < 3
+                ||RepeatedPassword==null ||RepeatedPassword != Password)
                 validData = false;
             return validData;
         }
