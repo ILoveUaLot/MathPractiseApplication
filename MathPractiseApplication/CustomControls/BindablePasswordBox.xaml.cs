@@ -36,7 +36,7 @@ namespace MathPractiseApplication.CustomControls
 
         private void OnPasswordChange(object sender, RoutedEventArgs e)
         {
-            Password += UserPassword.Password;
+            Password = UserPassword.Password;
         }
     }
 }
