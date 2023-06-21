@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MathPractiseApplication.Models;
+using MathPractiseApplication.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +14,18 @@ namespace MathPractiseApplication.ViewModel
         private string _username;
         private string _password;
         private string _repeatedPassword;
+        private bool _isViewVisible = true;
 
+        private IUserRepository userRepository;
+        public bool IsViewVisible
+        {
+            get => _isViewVisible;
+            set
+            {
+                _isViewVisible = value;
+                OnPropertyChanged(nameof(IsViewVisible));
+            }
+        }
         public string Username
         {
             get => _username; 
@@ -43,6 +56,16 @@ namespace MathPractiseApplication.ViewModel
 
         public ICommand RegistrationCommand { get; }
 
+        private void ExecuteRegistrationCommand(object obj)
+        {
+            User newUser = new User { Name = Username, Password = Password };
+
+            userRepository.Add(newUser);
+
+            Username = "";
+            Password = "";
+            RepeatedPassword = "";
+        }
         private bool CanExecuteRegistrationCommand(object parameter)
         {
             bool validData = true;
@@ -50,6 +73,11 @@ namespace MathPractiseApplication.ViewModel
                 ||RepeatedPassword==null ||RepeatedPassword != Password)
                 validData = false;
             return validData;
+        }
+        public RegisterViewModel()
+        {
+            RegistrationCommand = new ViewModelCommand(ExecuteRegistrationCommand, CanExecuteRegistrationCommand);
+            userRepository = new UserExcelRepository();
         }
     }
 }
