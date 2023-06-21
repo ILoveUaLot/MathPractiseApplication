@@ -69,7 +69,9 @@ namespace MathPractiseApplication.ViewModel
         private bool CanExecuteLoginCommand(object obj)
         {
             bool validData = true;
-            if (string.IsNullOrWhiteSpace(Username) || Password == null || Password.Length < 3)
+            if (string.IsNullOrWhiteSpace(Username) ||
+                Username.Length>10||Username.Length<2 
+                || Password == null || Password.Length < 5)
                 validData = false;
             return validData;
         }
