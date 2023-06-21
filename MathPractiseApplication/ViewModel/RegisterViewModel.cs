@@ -60,12 +60,11 @@ namespace MathPractiseApplication.ViewModel
         {
             User newUser = new User { Name = Username, Password = Password };
 
-            userRepository.Add(newUser);
-
-            bool IsValidUser = userRepository.
+            bool isAlreadyCreatedUser = userRepository.
                 AuthenticateUser(new System.Net.NetworkCredential(Username, Password));
-            if (IsValidUser)
+            if (!isAlreadyCreatedUser)
             {
+                userRepository.Add(newUser);
                 IsViewVisible = false;
             }
             Username = "";
@@ -75,7 +74,9 @@ namespace MathPractiseApplication.ViewModel
         private bool CanExecuteRegistrationCommand(object parameter)
         {
             bool validData = true;
-            if (string.IsNullOrWhiteSpace(Username) || Password == null || Password.Length < 3
+            if (string.IsNullOrWhiteSpace(Username) ||
+                Username.Length > 10 || Username.Length < 2
+                || Password == null || Password.Length < 5
                 ||RepeatedPassword==null ||RepeatedPassword != Password)
                 validData = false;
             return validData;
