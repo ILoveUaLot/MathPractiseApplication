@@ -62,6 +62,12 @@ namespace MathPractiseApplication.ViewModel
 
             userRepository.Add(newUser);
 
+            bool IsValidUser = userRepository.
+                AuthenticateUser(new System.Net.NetworkCredential(Username, Password));
+            if (IsValidUser)
+            {
+                IsViewVisible = false;
+            }
             Username = "";
             Password = "";
             RepeatedPassword = "";
@@ -76,7 +82,8 @@ namespace MathPractiseApplication.ViewModel
         }
         public RegisterViewModel()
         {
-            RegistrationCommand = new ViewModelCommand(ExecuteRegistrationCommand, CanExecuteRegistrationCommand);
+            RegistrationCommand = new ViewModelCommand(ExecuteRegistrationCommand, 
+                                                        CanExecuteRegistrationCommand);
             userRepository = new UserExcelRepository();
         }
     }
