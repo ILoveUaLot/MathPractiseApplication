@@ -52,6 +52,7 @@
                                         Foreground="White"
                                                  />
             <TextBox Name="UserName"
+                     MaxLength="10"
                      Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                      FontSize="14"
                      Foreground="White"
