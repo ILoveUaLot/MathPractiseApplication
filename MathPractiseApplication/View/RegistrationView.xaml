@@ -54,6 +54,7 @@
                                                  />
             <TextBox Name="UserName"
                      Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                     MaxLength="10"
                              FontSize="14"
                              Foreground="White"
                              CaretBrush="LightGray"
