@@ -17,9 +17,6 @@
     <Window.DataContext>
         <viewModel:AuthorizationViewModel/>
     </Window.DataContext>
-    <Window.Resources>
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"></BooleanToVisibilityConverter>
-    </Window.Resources>
     <Window.Visibility>
         <Binding ElementName="AuthForm"
                  Path="Visibility"
