@@ -12,6 +12,14 @@
     <UserControl.DataContext>
         <viewModel:RegisterViewModel/>
     </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"></BooleanToVisibilityConverter>
+    </UserControl.Resources>
+    <UserControl.Visibility>
+        <Binding Path="IsViewVisible" Mode="TwoWay" Converter="{StaticResource BooleanToVisibility}"/>
+    </UserControl.Visibility>
+    
     <StackPanel Width="300"
                 Orientation="Vertical">
 
@@ -89,7 +97,8 @@
                                                  Width="25"/>
             <customcontrols:BindablePasswordBox Password="{Binding RepeatedPassword,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
-        <Button Width="200" 
+        <Button Width="200"
+                Command="{Binding RegistrationCommand}"
                 Content="Зарегистрироваться"
                 FontFamily="{StaticResource Montserrat}"/>
     </StackPanel>
