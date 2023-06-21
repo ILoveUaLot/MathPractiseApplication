@@ -2,6 +2,8 @@
 using MathPractiseApplication.Repositories;
 using MathPractiseApplication.View;
 using System;
+using System.Security.Principal;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -82,6 +84,7 @@ namespace MathPractiseApplication.ViewModel
             var isValidUser = userRepository.AuthenticateUser(new System.Net.NetworkCredential(Username, Password));
             if (isValidUser)
             {
+                Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), null);
                 IsViewVisible = false;
             }
             else
