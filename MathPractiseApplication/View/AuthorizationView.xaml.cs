@@ -36,7 +36,8 @@ namespace MathPractiseApplication.View
 
         private void Closebtn_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            this.Visibility = Visibility.Collapsed;
+            Application.Current.Shutdown();
         }
     }
 }
