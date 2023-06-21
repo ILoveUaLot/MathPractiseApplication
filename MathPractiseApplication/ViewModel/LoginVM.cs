@@ -63,7 +63,7 @@ namespace MathPractiseApplication.ViewModel
         }
 
         public ICommand LoginCommand { get; }
-        public ICommand ShowPassword { get; }
+        public ICommand ShowPassword { get; } //TODO: show password
         
 
         private bool CanExecuteLoginCommand(object obj)
@@ -76,16 +76,16 @@ namespace MathPractiseApplication.ViewModel
 
         private void ExecuteLoginCommand(object obj)
         {
-            IsViewVisible = false;
-            //var isValidUser = userRepository.AuthenticateUser(new System.Net.NetworkCredential(Username,Password));
-            //if (isValidUser)
-            //{
-            //    IsViewVisible= false;
-            //}
-            //else
-            //{
-            //    ErrorMessage = "Invalid username or password";
-            //}
+            
+            var isValidUser = userRepository.AuthenticateUser(new System.Net.NetworkCredential(Username, Password));
+            if (isValidUser)
+            {
+                IsViewVisible = false;
+            }
+            else
+            {
+                ErrorMessage = "Invalid username or password";
+            }
         }
     }
 }
