@@ -14,8 +14,18 @@ namespace MathPractiseApplication.ViewModel
     {
         private User _userAccount;
         private IUserRepository _userRepository;
-        private ViewModelBase _childView;
+        
+        private UserAccountModel _userAccountModel;
 
+        public UserAccountModel UserAccountModel
+        {
+            get => _userAccountModel; 
+            set
+            {
+                _userAccountModel = value;
+                OnPropertyChanged(nameof(UserAccountModel));
+            }
+        }
         public User UserAccount
         {
             get => _userAccount; 
@@ -32,12 +42,14 @@ namespace MathPractiseApplication.ViewModel
             ShowTheoryViewCommand = new ViewModelCommand(ExecuteShowTheoryViewCommand);
             ShowPractiseViewCommand = new ViewModelCommand(ExecuteShowPractiseViewCommand);
             ShowTestViewCommand = new ViewModelCommand(ExecuteShowTestViewCommand);
-            //LoadCurrentUser();
+            LoadCurrentUser();
         }
 
         public ICommand ShowTheoryViewCommand { get; }
         public ICommand ShowPractiseViewCommand { get; }
         public ICommand ShowTestViewCommand { get; }
+        
+
         public void ExecuteShowTheoryViewCommand(object obj)
         {
             
@@ -54,7 +66,7 @@ namespace MathPractiseApplication.ViewModel
 
         private void LoadCurrentUser()
         {
-            //var user = _userRepository.UserGetByName();
+            var user = _userRepository.UserGetByName();
         }
 
         
