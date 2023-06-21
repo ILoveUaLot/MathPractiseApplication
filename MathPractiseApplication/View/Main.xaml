@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MathPractiseApplication.View"
         xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:viewModel="clr-namespace:MathPractiseApplication.ViewModel"
         mc:Ignorable="d"
         Title="Main" Height="700" Width="1300"
         WindowStyle="None"
@@ -12,6 +13,9 @@
         Background="Transparent"
         AllowsTransparency="True"
         >
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
     <Border
             CornerRadius="15"
             BorderThickness="3">
@@ -52,7 +56,7 @@
                                  Width="40" 
                                  Height="40" 
                                  Fill="Blue"/>
-                        <TextBlock Text="Username"
+                        <TextBlock Text="{Binding UserAccountModel.UserName}"
                                    FontSize="24"
                                    FontWeight="Medium"
                                    VerticalAlignment="Center"
@@ -64,28 +68,32 @@
                     
                     <!--Menu buttons-->
                     <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color1}">
+                                 Tag="{StaticResource color1}"
+                                 Command="{Binding ShowHomeViewCommand}">
                         <StackPanel Orientation="Horizontal">
                             <material:PackIcon Style="{StaticResource menuButtonIcon}" Kind="Home"></material:PackIcon>
                             <TextBlock Text="Главная" Style="{StaticResource menuButtonText}"></TextBlock>
                         </StackPanel>
                     </RadioButton>
                     <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color3}">
+                                 Tag="{StaticResource color3}"
+                                 Command="{Binding ShowPractiseViewCommand}">
                         <StackPanel Orientation="Horizontal">
                             <material:PackIcon Style="{StaticResource menuButtonIcon}" Kind="TestTube"></material:PackIcon>
                             <TextBlock Text="Практика" Style="{StaticResource menuButtonText}"></TextBlock>
                         </StackPanel>
                     </RadioButton>
                     <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color5}">
+                                 Tag="{StaticResource color5}"
+                                 Command="{Binding ShowTheoryViewCommand}">
                         <StackPanel Orientation="Horizontal">
                             <material:PackIcon Style="{StaticResource menuButtonIcon}" Kind="Book"></material:PackIcon>
                             <TextBlock Text="Теория" Style="{StaticResource menuButtonText}"></TextBlock>
                         </StackPanel>
                     </RadioButton>
                     <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color4}">
+                                 Tag="{StaticResource color4}"
+                                 Command="{Binding ShowTestViewCommand}">
                         <StackPanel Orientation="Horizontal">
                             <material:PackIcon Style="{StaticResource menuButtonIcon}" Kind="AcademicCap"></material:PackIcon>
                             <TextBlock Text="Тест" Style="{StaticResource menuButtonText}"></TextBlock>
@@ -154,7 +162,7 @@
                         </Button>
                     </StackPanel>
 
-                    <ContentControl Content=""
+                    <ContentControl Content="{Binding CurrentChildView}"
                                     Grid.Row="2"
                                     Margin="25"></ContentControl>
                 </Grid>
