@@ -13,7 +13,7 @@ namespace MathPractiseApplication.Repositories
     public class UserExcelRepository : IUserRepository
     {
         ExcelPackage userPackage;
-        string filePath = Path.Combine(Environment.CurrentDirectory,"Data");
+        string filePath ="Data/Users.xmls";
 
         public UserExcelRepository()
         {
@@ -38,7 +38,7 @@ namespace MathPractiseApplication.Repositories
         {
             var worksheetUsers = userPackage.Workbook.Worksheets["Users"];
             int lastUsedRow = worksheetUsers.Dimension.End.Row;
-            worksheetUsers.Cells[lastUsedRow + 1, 1].Value = user.Id;
+            worksheetUsers.Cells[lastUsedRow + 1, 1].Value = lastUsedRow;
             worksheetUsers.Cells[lastUsedRow + 1, 2].Value = user.Name;
             worksheetUsers.Cells[lastUsedRow + 1, 3].Value = user.Password;
             userPackage.SaveAs(new FileInfo(filePath));
