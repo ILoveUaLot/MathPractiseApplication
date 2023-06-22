@@ -79,7 +79,9 @@
                                                      Style="{StaticResource ContentImgInfo}"
                                                      />
                                 </Border>
-                                <Button Background="Transparent" 
+                                <Button Command="{Binding ShowFunctionPropertiesTheoryPageCommand}"
+                                        Click="ChangeVisibility"
+                                        Background="Transparent" 
                                         BorderThickness="0" 
                                         Grid.Row="1"
                                         Height="{Binding Height, RelativeSource={RelativeSource AncestorType={x:Type Border}, Mode=FindAncestor}}"/>
