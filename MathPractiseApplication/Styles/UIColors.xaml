@@ -33,4 +33,5 @@
     <SolidColorBrush x:Key="panelColor" Color="#200f53"/>
     <SolidColorBrush x:Key="overPanelColor" Color="#281269"/>
     <SolidColorBrush x:Key="activePanelColor" Color="#2b1372"/>
+    <SolidColorBrush x:Key="disablePanelColor" Color="DarkGray"/>
 </ResourceDictionary>
