@@ -4,119 +4,147 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MathPractiseApplication.View"
+             xmlns:converters="clr-namespace:MathPractiseApplication.Converters"
+             xmlns:viewModel="clr-namespace:MathPractiseApplication.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              >
+    <UserControl.DataContext>
+        <viewModel:ChooseTheoryViewModel/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <converters:InverseVisibilityConverter x:Key="InverseVisibilityConverter"/>
+    </UserControl.Resources>
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <Expander Style="{DynamicResource MaterialDesignExpander}"
-                      Header="Решение системы уравнений"
-                      Background="transparent"
-                      Foreground="white">
-                <StackPanel Orientation="Horizontal" Height="300">
-
-                    <Border Style="{StaticResource contentBorder}" Width="250">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="50"/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Border Grid.Row="0" Style="{StaticResource HeaderContentBorder}">
-                                <TextBlock Style="{StaticResource HeaderContentText}" 
-                                           Text="Система линейных уравнений" TextWrapping="Wrap"/>
-                            </Border>
-                            <Border Grid.Row="1" CornerRadius="0,0,20,20">
-                                <Border.Background>
-                                    <ImageBrush Stretch="Fill" ImageSource="/Images/Background.png" Opacity="0.7"/>
-                                </Border.Background>
-                                <Button Background="Transparent" BorderThickness="0"
-                                    Height="{Binding Height, RelativeSource={RelativeSource AncestorType={x:Type Border}, Mode=FindAncestor}}"/>
-                            </Border>
-                            <materialDesign:PackIcon Grid.Row="1"
-                                                     Style="{StaticResource ContentImgInfo}"
-                                                     />
-                        </Grid>
-                    </Border>
-
-                    <Border Style="{StaticResource contentBorder}" Width="250">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="50"/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Border Grid.Row="0" Style="{StaticResource HeaderContentBorder}">
-                                <TextBlock Style="{StaticResource HeaderContentText}" 
-                                           Text="Методы решения"/>
-                            </Border>
-                            <Border Grid.Row="1" CornerRadius="0,0,20,20">
-                                <Border.Background>
-                                    <ImageBrush Stretch="Fill" ImageSource="/Images/Background.png" Opacity="0.7"/>
-                                </Border.Background>
-                                <Button Background="Transparent" BorderThickness="0"
-                                    Height="{Binding Height, RelativeSource={RelativeSource AncestorType={x:Type Border}, Mode=FindAncestor}}"/>
-                            </Border>
-                            <materialDesign:PackIcon Grid.Row="1"
-                                                     Style="{StaticResource ContentImgInfo}"
-                                                     />
-                        </Grid>
-                    </Border>
-                </StackPanel>
-            </Expander>
-            <Expander Style="{DynamicResource MaterialDesignExpander}"
+        <Frame x:Name="Theory" 
+               NavigationUIVisibility="Hidden"
+               Content="{Binding CurrentViewTheory}" Visibility="Collapsed"></Frame>
+        <ScrollViewer   x:Name="ChooseTheory"
+                        VerticalScrollBarVisibility="Auto" 
+                        Visibility="{Binding ElementName=Theory, 
+                                    Mode=TwoWay,
+                                    Path=Visibility, 
+                                    UpdateSourceTrigger=PropertyChanged,
+                                    Converter={StaticResource InverseVisibilityConverter}}">
+            <StackPanel Orientation="Vertical" >
+                <Expander Style="{DynamicResource MaterialDesignExpander}"
                       Header="Решение уравнений"
                       Background="transparent"
                       Foreground="white">
-                <StackPanel Orientation="Horizontal" Height="300">
+                    <StackPanel Orientation="Horizontal" Height="300">
 
-                    <Border Style="{StaticResource contentBorder}" Width="250">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="50"/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Border Grid.Row="0" Style="{StaticResource HeaderContentBorder}">
-                                <TextBlock Style="{StaticResource HeaderContentText}" 
+                        <Border Style="{StaticResource contentBorder}" Width="250">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Border Grid.Row="0" Style="{StaticResource HeaderContentBorder}">
+                                    <TextBlock Style="{StaticResource HeaderContentText}" 
                                            Text="Линейные уравнения"/>
-                            </Border>
-                            <Border Grid.Row="1" CornerRadius="0,0,20,20">
-                                <Border.Background>
-                                    <ImageBrush Stretch="Fill" ImageSource="/Images/Background.png" Opacity="0.7"/>
-                                </Border.Background>
-                                <Button Background="Transparent" BorderThickness="0"
-                                    Height="{Binding Height, RelativeSource={RelativeSource AncestorType={x:Type Border}, Mode=FindAncestor}}"/>
-                            </Border>
-                            <materialDesign:PackIcon Grid.Row="1"
+                                </Border>
+                                <Border Grid.Row="1" CornerRadius="0,0,20,20">
+                                    <Border.Background>
+                                        <ImageBrush Stretch="Fill" ImageSource="/Images/Background.png" Opacity="0.7"/>
+                                    </Border.Background>
+                                    <materialDesign:PackIcon Grid.Row="1"
                                                      Style="{StaticResource ContentImgInfo}"
                                                      />
-                        </Grid>
-                    </Border>
+                                </Border>
+                                <Button Background="Transparent" 
+                                        Command="{Binding ShowLinearEquationTheoryPageCommand}"
+                                        Click="ChangeVisibility"
+                                        BorderThickness="0" 
+                                        Grid.Row="1"
+                                        Height="{Binding Height, RelativeSource={RelativeSource AncestorType={x:Type Border}, Mode=FindAncestor}}"/>
+                            </Grid>
+                        </Border>
 
-                    <Border Style="{StaticResource contentBorder}" Width="250">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="50"/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Border Grid.Row="0" Style="{StaticResource HeaderContentBorder}">
-                                <TextBlock Style="{StaticResource HeaderContentText}" 
+                        <Border Style="{StaticResource contentBorder}" Width="250">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Border Grid.Row="0" Style="{StaticResource HeaderContentBorder}">
+                                    <TextBlock Style="{StaticResource HeaderContentText}" 
                                            Text="Свойства функций"/>
-                            </Border>
-                            <Border Grid.Row="1" CornerRadius="0,0,20,20">
-                                <Border.Background>
-                                    <ImageBrush Stretch="Fill" ImageSource="/Images/Background.png" Opacity="0.7"/>
-                                </Border.Background>
-                                <Button Background="Transparent" BorderThickness="0"
-                                    Height="{Binding Height, RelativeSource={RelativeSource AncestorType={x:Type Border}, Mode=FindAncestor}}"/>
-                            </Border>
-                            <materialDesign:PackIcon Grid.Row="1"
+                                </Border>
+                                <Border Grid.Row="1" CornerRadius="0,0,20,20">
+                                    <Border.Background>
+                                        <ImageBrush Stretch="Fill" ImageSource="/Images/Background.png" Opacity="0.7"/>
+                                    </Border.Background>
+                                    <materialDesign:PackIcon
                                                      Style="{StaticResource ContentImgInfo}"
                                                      />
-                        </Grid>
-                    </Border>
-                </StackPanel>
-            </Expander>
-        </StackPanel>
-        
+                                </Border>
+                                <Button Background="Transparent" 
+                                        BorderThickness="0" 
+                                        Grid.Row="1"
+                                        Height="{Binding Height, RelativeSource={RelativeSource AncestorType={x:Type Border}, Mode=FindAncestor}}"/>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+                <Expander Style="{DynamicResource MaterialDesignExpander}"
+                      Header="Решение системы уравнений"
+                      Background="transparent"
+                      Foreground="white">
+                    <StackPanel Orientation="Horizontal" Height="300">
+
+                        <Border Style="{StaticResource contentBorder}" Width="250">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Border Grid.Row="0" Style="{StaticResource HeaderContentBorder}">
+                                    <TextBlock Style="{StaticResource HeaderContentText}" 
+                                           Text="Система линейных уравнений" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border Grid.Row="1" CornerRadius="0,0,20,20">
+                                    <Border.Background>
+                                        <ImageBrush Stretch="Fill" ImageSource="/Images/Background.png" Opacity="0.7"/>
+                                    </Border.Background>
+                                    <materialDesign:PackIcon Grid.Row="1"
+                                                     Style="{StaticResource ContentImgInfo}"
+                                                     />
+                                </Border>
+                                <Button Background="Transparent" 
+                                        BorderThickness="0" 
+                                        Grid.Row="1"
+                                        Height="{Binding Height, RelativeSource={RelativeSource AncestorType={x:Type Border}, Mode=FindAncestor}}"/>
+                            </Grid>
+                        </Border>
+
+                        <Border Style="{StaticResource contentBorder}" Width="250">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Border Grid.Row="0" Style="{StaticResource HeaderContentBorder}">
+                                    <TextBlock Style="{StaticResource HeaderContentText}" 
+                                           Text="Методы решения"/>
+                                </Border>
+                                <Border Grid.Row="1" CornerRadius="0,0,20,20">
+                                    <Border.Background>
+                                        <ImageBrush Stretch="Fill" ImageSource="/Images/Background.png" Opacity="0.7"/>
+                                    </Border.Background>
+                                    <materialDesign:PackIcon Grid.Row="1"
+                                                     Style="{StaticResource ContentImgInfo}"
+                                                     />
+                                </Border>
+                                <Button Background="Transparent" 
+                                        BorderThickness="0" 
+                                        Grid.Row="1"
+                                        Height="{Binding Height, RelativeSource={RelativeSource AncestorType={x:Type Border}, Mode=FindAncestor}}"/>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>
