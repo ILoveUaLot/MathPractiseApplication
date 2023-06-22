@@ -2,18 +2,107 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:MathPractiseApplication.View.Theory.SystemOfEquationTheory"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1000" d:DesignWidth="800"
       Title="SystemOfEquationTheoryPage1">
 
+
+    <Page.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource switchPageButton}"></Style>
+        <Style TargetType="material:PackIcon" BasedOn="{StaticResource switchPageButtonIcon}"/>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock FontSize="100" Foreground="White">
-            <![CDATA[{]]>
-        </TextBlock>
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button 
+                    IsEnabled="False"
+                    Foreground="{StaticResource disablePanelColor}"
+                >
+                <material:PackIcon Kind="ArrowBack"/>
+            </Button>
+            <Button Foreground="{StaticResource disablePanelColor}"
+                    Cursor="Hand"
+                    IsEnabled="False"
+                >
+                <material:PackIcon Kind="ArrowForward"/>
+            </Button>
+        </StackPanel>
+        <TextBlock x:Name="Header"
+                   Grid.Row="0"
+                   Style="{StaticResource TheoryHeaderContentText}"
+                   Text="Cистема уравнений"/>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+            <StackPanel Orientation="Vertical"
+                        >
+                <RichTextBox Margin="0,10,0,0" IsReadOnly="True" BorderThickness="0">
+                    <RichTextBox.Resources>
+                        <Style TargetType="Paragraph" BasedOn="{StaticResource TheoryContentText}"/>
+                        <Style TargetType="List">
+                            <Setter Property="TextElement.Foreground" Value="White"></Setter>
+                            <Setter Property="TextElement.FontSize" Value="14"></Setter>
+                        </Style>
+                    </RichTextBox.Resources>
+                    <FlowDocument>
+                        <Paragraph >
+                            Для ax + by + c = 0 можно сколько угодно раз брать произвольные значение для x и находить значения для y. Решений в таком случае может быть бесчисленное множество.
+                        </Paragraph>
+                        <Paragraph >
+                            Система линейных уравнений (ЛУ) с двумя переменными образуется в случае, когда x и y связаны не одним, а двумя уравнениями. Такая система может иметь одно решение или не иметь решений совсем. Выглядит это вот так:
+                        </Paragraph>
+                        <BlockUIContainer>
+                            <StackPanel Orientation="Horizontal" Margin="40,0,0,0">
+                                <TextBlock FontSize="100" Foreground="White">
+                                    <![CDATA[{]]>
+                                </TextBlock>
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
+                                    <TextBlock Foreground="White" FontSize="20" Margin="0,20,0,0">a₁x + b₁y + c₁ = 0</TextBlock>
+                                    <TextBlock Foreground="White" FontSize="20" Margin="0,20,0,0">a₂x + b₂y + c₂ = 0</TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </BlockUIContainer>
+                        <Paragraph >
+                            Из первого линейного уравнения a₁x + b₁y + c₁ = 0 можно получить линейную функцию, при условии если b₁ ≠ 0: y = k₁x + m₁. График — прямая линия.
+                        </Paragraph>
+                        <Paragraph >
+                            Из второго ЛУ a₂x + b₂y + c₂ = 0 можно получить линейную функцию, если b₂ ≠ 0: y = k₂x + m₂. Графиком снова будет прямая линия.
+Можно записать систему иначе:
+                        </Paragraph>
+                        <BlockUIContainer>
+                            <StackPanel Orientation="Horizontal" Margin="40,0,0,0">
+                                <TextBlock FontSize="100" Foreground="White">
+                                    <![CDATA[{]]>
+                                </TextBlock>
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
+                                    <TextBlock Foreground="White" FontSize="20" Margin="0,20,0,0">y = k₁x + m₁ </TextBlock>
+                                    <TextBlock Foreground="White" FontSize="20" Margin="0,20,0,0">y = k₂x + m₂ = 0</TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </BlockUIContainer>
+                        <Paragraph >
+                            Множеством решений первого ЛУ является множество точек, лежащих на определенной прямой, аналогично и для второго ЛУ. Если эти прямые пересекаются — у системы есть единственное решение. Это возможно при условии, если k₁ ≠ k₂.
+                        </Paragraph>
+                        <Paragraph>
+                            Две прямые могут быть параллельны, а значит, они никогда не пересекутся и система не будет иметь решений. Это возможно при следующих условиях: k₁ = k₂ и m₁ ≠ m₂.
+                        </Paragraph>
+                        <Paragraph>
+                            Две прямые могут совпасть, и тогда каждая точка будет решением, а у системы будет бесчисленное множество решений. Это возможно при следующих условиях: k₁ = k₂ и m₁ = m₂.
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
+<!--<TextBlock FontSize="100" Foreground="White">
+            <![CDATA[{]]>
+</TextBlock>-->
