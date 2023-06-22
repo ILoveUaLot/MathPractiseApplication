@@ -36,6 +36,7 @@
         <Setter Property="Width" Value="35"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{StaticResource textColor3}"/>
+        <Setter Property="Tag" Value="{StaticResource color3}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
