@@ -24,5 +24,10 @@ namespace MathPractiseApplication.View
         {
             InitializeComponent();
         }
+
+        private void ChangeVisibility(object sender, RoutedEventArgs e)
+        {
+            ChooseTheory.Visibility = Visibility.Collapsed;
+        }
     }
 }
