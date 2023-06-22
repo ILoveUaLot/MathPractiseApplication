@@ -18,16 +18,19 @@
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal"
                     HorizontalAlignment="Center">
-            <Button Style="{StaticResource controlButton}"
+            <Button Style="{StaticResource switchPageButton}"
+                    Foreground="{StaticResource disablePanelColor}"
                     IsEnabled="False"
                 >
-                <material:PackIcon Kind="ArrowBack"/>
+                <material:PackIcon Style="{StaticResource switchPageButtonIcon}" Kind="ArrowBack"/>
             </Button>
-            <Button Style="{StaticResource controlButton}"
+            <Button Style="{StaticResource switchPageButton}"
+                    Tag="{StaticResource color3}"
                     Cursor="Hand"
                     Click="ForwardButton_Click"
+                    
                 >
-                <material:PackIcon Kind="ArrowForward"/>
+                <material:PackIcon Style="{StaticResource switchPageButtonIcon}" Kind="ArrowForward"/>
             </Button>
         </StackPanel>
         <TextBlock x:Name="Header"
@@ -70,7 +73,7 @@
 
                     </FlowDocument>
                 </RichTextBox>
-                <Image Source="/Images/sin.png" Margin="20"/>
+                <Image Source="pack://application:,,,/Images/sin.png" Margin="20"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>
