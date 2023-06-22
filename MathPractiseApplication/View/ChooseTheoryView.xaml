@@ -116,6 +116,8 @@
                                 <Button Background="Transparent" 
                                         BorderThickness="0" 
                                         Grid.Row="1"
+                                        Command="{Binding ShowSystemEquationTheoryPageCommand}"
+                                        Click="ChangeVisibility"
                                         Height="{Binding Height, RelativeSource={RelativeSource AncestorType={x:Type Border}, Mode=FindAncestor}}"/>
                             </Grid>
                         </Border>
