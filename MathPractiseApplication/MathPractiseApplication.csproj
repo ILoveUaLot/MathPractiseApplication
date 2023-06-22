@@ -8,13 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\Background.png" />
-    <None Remove="Images\MathIcon.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Images\Background.png" />
+    <Resource Include="Images\cos.png" />
+    <Resource Include="Images\ctgx.png" />
     <Resource Include="Images\MathIcon.png" />
+    <Resource Include="Images\sin.png" />
+    <Resource Include="Images\tgx.png" />
   </ItemGroup>
 
   <ItemGroup>
