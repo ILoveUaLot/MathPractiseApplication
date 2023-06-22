@@ -23,8 +23,8 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Center">
             <Button 
-                    IsEnabled="False"
-                    Foreground="{StaticResource disablePanelColor}"
+                    Click="BackButton_Click"
+                    Cursor="Hand"
                 >
                 <material:PackIcon Kind="ArrowBack"/>
             </Button>

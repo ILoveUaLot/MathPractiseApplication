@@ -27,9 +27,9 @@
                 >
                 <material:PackIcon Kind="ArrowBack"/>
             </Button>
-            <Button Foreground="{StaticResource disablePanelColor}"
+            <Button 
                     Cursor="Hand"
-                    IsEnabled="False"
+                    Click="ForwardButton_Click"
                 >
                 <material:PackIcon Kind="ArrowForward"/>
             </Button>

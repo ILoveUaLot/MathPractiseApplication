@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathPractiseApplication.View.Theory.LinearEquationTheory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace MathPractiseApplication.View.Theory.SystemOfEquationSolutionTheory
         public SystemOfEquationSolutionTheoryPage2()
         {
             InitializeComponent();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new SystemOfEquationSolutionTheoryPage1());
         }
     }
 }
