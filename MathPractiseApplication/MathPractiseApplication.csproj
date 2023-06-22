@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="Data\Users.xmlx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\Background.png" />
     <Resource Include="Images\cos.png" />
     <Resource Include="Images\ctgx.png" />
@@ -18,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="Fonts\" />
-    <Folder Include="Data\" />
   </ItemGroup>
 
   <ItemGroup>
