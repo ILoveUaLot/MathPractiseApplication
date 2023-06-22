@@ -26,12 +26,12 @@ namespace MathPractiseApplication.View.Theory.FunctionPropertiesTheory
         }
         private void ForwardButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new FunctionPropertiesTheoryPage2());
+            NavigationService.Navigate(new FunctionPropertiesTheoryPage4());
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new FunctionPropertiesTheoryPage4());
+            NavigationService.Navigate(new FunctionPropertiesTheoryPage2());
         }
     }
 }
