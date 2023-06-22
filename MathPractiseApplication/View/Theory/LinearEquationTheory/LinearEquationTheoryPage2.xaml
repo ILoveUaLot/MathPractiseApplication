@@ -8,7 +8,10 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LinearEquationTheoryPage2">
-
+    <Page.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource switchPageButton}"/>
+        <Style TargetType="material:PackIcon" BasedOn="{StaticResource switchPageButtonIcon}"/>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
@@ -18,13 +21,13 @@
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal"
                     HorizontalAlignment="Center">
-            <Button Style="{StaticResource controlButton}"
+            <Button 
                     Cursor="Hand"
                     Click="BackButton_Click"
                 >
                 <material:PackIcon Kind="ArrowBack"/>
             </Button>
-            <Button Style="{StaticResource controlButton}"
+            <Button 
                     Cursor="Hand"
                     Click="ForwardButton_Click"
                 >
