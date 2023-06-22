@@ -16,22 +16,22 @@ using System.Windows.Shapes;
 namespace MathPractiseApplication.View.Theory.LinearEquationTheory
 {
     /// <summary>
-    /// Interaction logic for LinearEquationTheoryPage2.xaml
+    /// Interaction logic for LinearEquationTheoryPage3.xaml
     /// </summary>
-    public partial class LinearEquationTheoryPage2 : Page
+    public partial class LinearEquationTheoryPage3 : Page
     {
-        public LinearEquationTheoryPage2()
+        public LinearEquationTheoryPage3()
         {
             InitializeComponent();
         }
         private void ForwardButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new LinearEquationTheoryPage3());
+            NavigationService.Navigate(new LinearEquationTheoryPage4());
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new LinearEquationTheoryPage1());
+            NavigationService.Navigate(new LinearEquationTheoryPage2());
         }
     }
 }

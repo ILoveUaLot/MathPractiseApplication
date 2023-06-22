@@ -1,0 +1,66 @@
+﻿<Page x:Class="MathPractiseApplication.View.Theory.LinearEquationTheory.LinearEquationTheoryPage3"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MathPractiseApplication.View.Theory.LinearEquationTheory"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LinearEquationTheoryPage3">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button Style="{StaticResource controlButton}"
+                    Click="BackButton_Click"
+                    Cursor="Hand"
+                >
+                <material:PackIcon Kind="ArrowBack"/>
+            </Button>
+            <Button Style="{StaticResource controlButton}"
+                    Cursor="Hand"
+                    Click="ForwardButton_Click"
+                >
+                <material:PackIcon Kind="ArrowForward"/>
+            </Button>
+        </StackPanel>
+        <TextBlock x:Name="Header"
+                   Grid.Row="0"
+                   Style="{StaticResource TheoryHeaderContentText}"
+                   Text="Линейные уравнения"/>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+            <StackPanel Orientation="Vertical"
+                        >
+                <TextBlock 
+                       Style="{StaticResource TheorySubHeaderContentText}"
+                Text="Уравнение с двумя переменными"/>
+
+                <RichTextBox Margin="0,10,0,0" IsReadOnly="True" BorderThickness="0">
+                    <RichTextBox.Resources>
+                        <Style TargetType="Paragraph" BasedOn="{StaticResource TheoryContentText}"/>
+                        <Style TargetType="List">
+                            <Setter Property="TextElement.Foreground" Value="White"></Setter>
+                            <Setter Property="TextElement.FontSize" Value="14"></Setter>
+                        </Style>
+                    </RichTextBox.Resources>
+                    <FlowDocument>
+                        <Paragraph >В случае, если в уравнении есть две переменные, линейное уравнение можно представить в общей форме: ax + by + c = 0</Paragraph>
+                        <Paragraph >где переменными являются величины x и y, а коэффициентами — a, b и c. В канонической формах это уравнение имеет вид: Ax + By = C, при A = a, B = b, C = -c</Paragraph>
+                        <Paragraph >Решением или корнями такого уравнения называют такую пару значений переменных , которая обращает его в тождество. Таких решений (корней) линейное уравнение с двумя переменными имеет бесконечное множество.</Paragraph>
+                        <Paragraph >
+                            Существуют и другие формы линейного уравнения, к которым его можно привести с помощью простых алгебраических преобразований (прибавления одной и той же величины к уравнению, умножения или деления на одно и то же число, не равное нулю)
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
