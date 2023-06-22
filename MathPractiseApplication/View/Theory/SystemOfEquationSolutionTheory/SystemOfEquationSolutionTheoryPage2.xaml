@@ -1,0 +1,173 @@
+﻿<Page x:Class="MathPractiseApplication.View.Theory.SystemOfEquationSolutionTheory.SystemOfEquationSolutionTheoryPage2"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:MathPractiseApplication.View.Theory.SystemOfEquationSolutionTheory"
+      mc:Ignorable="d" 
+      d:DesignHeight="1450" d:DesignWidth="800"
+      Title="SystemOfEquationSolutionTheoryPage2">
+
+    <Page.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource switchPageButton}"></Style>
+        <Style TargetType="material:PackIcon" BasedOn="{StaticResource switchPageButtonIcon}"/>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button 
+                    IsEnabled="False"
+                    Foreground="{StaticResource disablePanelColor}"
+                >
+                <material:PackIcon Kind="ArrowBack"/>
+            </Button>
+            <Button Foreground="{StaticResource disablePanelColor}"
+                    Cursor="Hand"
+                    IsEnabled="False"
+                >
+                <material:PackIcon Kind="ArrowForward"/>
+            </Button>
+        </StackPanel>
+        <TextBlock x:Name="Header"
+                   Grid.Row="0"
+                   Style="{StaticResource TheoryHeaderContentText}"
+                   Text="Методы решений системы уравнений"/>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+            <StackPanel Orientation="Vertical"
+                        >
+                <TextBlock 
+                            Style="{StaticResource TheorySubHeaderContentText}"
+                            Text="Метод Гаусса"/>
+                <RichTextBox Margin="0,10,0,0" IsReadOnly="True" BorderThickness="0">
+                    <RichTextBox.Resources>
+                        <Style TargetType="Paragraph" BasedOn="{StaticResource TheoryContentText}"/>
+                        <Style TargetType="List">
+                            <Setter Property="TextElement.Foreground" Value="White"></Setter>
+                            <Setter Property="TextElement.FontSize" Value="14"></Setter>
+                        </Style>
+                    </RichTextBox.Resources>
+                    <FlowDocument>
+                        <Paragraph >
+                            Разберем решение систем уравнений методом Гаусса. Вот алгоритм для решения системы:
+                        </Paragraph>
+                        <BlockUIContainer>
+                            <StackPanel Orientation="Horizontal" Margin="40,0,0,0">
+                                <TextBlock FontSize="100" Foreground="White">
+                                    <![CDATA[{]]>
+                                </TextBlock>
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
+                                    <TextBlock Foreground="White" FontSize="20" Margin="0,20,0,0">x - y = 5</TextBlock>
+                                    <TextBlock Foreground="White" FontSize="20" Margin="0,20,0,0">2x + y = -7</TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </BlockUIContainer>
+                        <List MarkerStyle="Decimal">
+                            <ListItem >
+                                <Paragraph>
+                                    На первом этапе нужно записать расширенную матрицу системы:
+Матрица системы – это матрица, составленная только из коэффициентов при неизвестных, в данном примере матрица системы:
+                                </Paragraph>
+                                <BlockUIContainer>
+                                    <StackPanel Orientation="Horizontal" Margin="40,0,0,0">
+                                        <TextBlock FontSize="100" Foreground="White">
+                                    <![CDATA[(]]>
+                                        </TextBlock>
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Foreground="White" FontSize="20" Margin="0,20,0,0">1</TextBlock>
+                                                <TextBlock Foreground="White" FontSize="20" Margin="40,20,0,0">-1</TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Foreground="White" FontSize="20" Margin="0,20,0,0">2</TextBlock>
+                                                <TextBlock Foreground="White" FontSize="20" Margin="40,20,0,0">1</TextBlock>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <TextBlock FontSize="100" Foreground="White">
+                                    <![CDATA[)]]>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </BlockUIContainer>
+                                <Paragraph>
+                                    Расширенная матрица системы – это та же матрица системы плюс столбец свободных членов, в данном случае:
+                                </Paragraph>
+                                <BlockUIContainer>
+                                    <StackPanel Orientation="Horizontal" Margin="40,0,0,0">
+                                        <TextBlock FontSize="100" Foreground="White">
+                                    <![CDATA[(]]>
+                                        </TextBlock>
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Foreground="White" FontSize="20" Margin="0,20,0,0">1</TextBlock>
+                                                <TextBlock Foreground="White" FontSize="20" Margin="40,20,0,0">-1</TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Foreground="White" FontSize="20" Margin="0,20,0,0">2</TextBlock>
+                                                <TextBlock Foreground="White" FontSize="20" Margin="40,20,0,0">1</TextBlock>
+                                            </StackPanel>
+
+                                        </StackPanel>
+                                        <TextBlock FontSize="100" FontWeight="Light" Foreground="White">
+                                    <![CDATA[|]]>
+                                        </TextBlock>
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                                            <TextBlock Foreground="White" FontSize="20" Margin="0,20,0,0">-5</TextBlock>
+
+                                            <TextBlock Foreground="White" FontSize="20" Margin="0,20,0,0">-7</TextBlock>
+
+                                        </StackPanel>
+                                        <TextBlock FontSize="100" Foreground="White">
+                                    <![CDATA[)]]>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </BlockUIContainer>
+                            </ListItem>
+                            <ListItem>
+                                <Paragraph>
+                                    После того, как расширенная матрица системы записана, с ней необходимо выполнить некоторые действия, которые называют элементарными преобразованиями.
+                                </Paragraph>
+                            </ListItem>
+                            <ListItem>
+                                <Paragraph>
+                                    В результате элементарных преобразований получена эквивалентная исходной система уравнений:
+                                </Paragraph>
+                                <BlockUIContainer>
+                                    <StackPanel Orientation="Horizontal" Margin="40,0,0,0">
+                                        <TextBlock FontSize="100" Foreground="White">
+                                    <![CDATA[{]]>
+                                        </TextBlock>
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
+                                            <TextBlock Foreground="White" FontSize="20" Margin="0,20,0,0">x - y = 5</TextBlock>
+                                            <TextBlock Foreground="White" FontSize="20" Margin="0,20,0,0">y = 1</TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </BlockUIContainer>
+                            </ListItem>
+                            <ListItem>
+                                <Paragraph>Теперь систему нужно «раскрутить» в обратном направлении – снизу вверх, этот процесс называется обратным ходом метода Гаусса. В нижнем уравнении у нас уже готовый результат: y =1</Paragraph>
+                            </ListItem>
+                            <ListItem>
+                                <Paragraph>
+                                    Рассмотрим первое уравнение системы x - y = 5 и подставим в него уже известное значение «игрек»:
+                                </Paragraph>
+                                <Paragraph>
+                                    x - 1 = -5 ; x = -4
+                                </Paragraph>
+                                <Paragraph>
+                                    Ответ: y = 1 ; x = -4
+                                </Paragraph>
+                            </ListItem>
+                        </List>
+                    </FlowDocument>
+                </RichTextBox>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
