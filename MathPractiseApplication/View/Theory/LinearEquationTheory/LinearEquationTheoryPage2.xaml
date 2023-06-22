@@ -1,0 +1,68 @@
+﻿<Page x:Class="MathPractiseApplication.View.Theory.LinearEquationTheory.LinearEquationTheoryPage2"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MathPractiseApplication.View.Theory.LinearEquationTheory"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LinearEquationTheoryPage2">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button Style="{StaticResource controlButton}"
+                    Cursor="Hand"
+                    Click="BackButton_Click"
+                >
+                <material:PackIcon Kind="ArrowBack"/>
+            </Button>
+            <Button Style="{StaticResource controlButton}"
+                    Cursor="Hand"
+                    Click="ForwardButton_Click"
+                >
+                <material:PackIcon Kind="ArrowForward"/>
+            </Button>
+        </StackPanel>
+        <TextBlock x:Name="Header"
+                   Grid.Row="0"
+                   Style="{StaticResource TheoryHeaderContentText}"
+                   Text="Линейные уравнения"/>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical"
+                        >
+                <TextBlock 
+                       Style="{StaticResource TheorySubHeaderContentText}"
+                Text="Примеры решения"/>
+
+                <RichTextBox Margin="0,10,0,0" BorderThickness="0" IsReadOnly="True">
+                    <RichTextBox.Resources>
+                        <Style TargetType="Paragraph" BasedOn="{StaticResource TheoryContentText}"/>
+                        <Style TargetType="List">
+                            <Setter Property="TextElement.Foreground" Value="White"></Setter>
+                            <Setter Property="TextElement.FontSize" Value="14"></Setter>
+                        </Style>
+                    </RichTextBox.Resources>
+                    <FlowDocument>
+                        <Paragraph >Дано линейное уравнение в виде результата умножения двух чисел; известен один из множителей, второй неизвестен, но известен результат.</Paragraph>
+                        <Paragraph >3 * x = 24</Paragraph>
+                        <Paragraph >В данном случае для того, чтобы найти неизвестный множитель 
+х, результат умножения 24 нужно разделить на известный множитель 3. Результатом операции деления будет 8 как корень данного уравнения.
+                        </Paragraph>
+                        <Paragraph >
+                            x = 24 / 3 = 8
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

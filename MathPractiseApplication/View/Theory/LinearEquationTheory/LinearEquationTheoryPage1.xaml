@@ -1,0 +1,79 @@
+﻿<Page x:Class="MathPractiseApplication.View.Theory.LinearEquationTheory.LinearEquationTheoryPage1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:MathPractiseApplication.View.Theory.LinearEquationTheory"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LinearEquationTheoryPage1">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button Style="{StaticResource controlButton}"
+                    IsEnabled="False"
+                >
+                <material:PackIcon Kind="ArrowBack"/>
+            </Button>
+            <Button Style="{StaticResource controlButton}"
+                    Cursor="Hand"
+                    Click="ForwardButton_Click"
+                >
+                <material:PackIcon Kind="ArrowForward"/>
+            </Button>
+        </StackPanel>
+        <TextBlock x:Name="Header"
+                   Grid.Row="0"
+                   Style="{StaticResource TheoryHeaderContentText}"
+                   Text="Линейные уравнения"/>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+            <StackPanel Orientation="Vertical"
+                        >
+                <TextBlock 
+                       Style="{StaticResource TheorySubHeaderContentText}"
+                Text="Уравнения с одной переменной"/>
+
+                <RichTextBox Margin="0,10,0,0" IsReadOnly="True" BorderThickness="0">
+                    <RichTextBox.Resources>
+                        <Style TargetType="Paragraph" BasedOn="{StaticResource TheoryContentText}"/>
+                        <Style TargetType="List">
+                            <Setter Property="TextElement.Foreground" Value="White"></Setter>
+                            <Setter Property="TextElement.FontSize" Value="14"></Setter>
+                        </Style>
+                    </RichTextBox.Resources>
+                    <FlowDocument>
+                            <Paragraph >Уравнение с одной переменной — это равенство, содержащее переменную.</Paragraph>
+                            <Paragraph >Корень уравнения - это значение переменной, при котором уравнение обращается в верное числовое равенство.</Paragraph>
+                            <Paragraph >Решить уравнение означает найти все его корни или доказать, что корней нет.</Paragraph>
+                            <Paragraph >Равносильные уравнения - уравнения с одними и теми же корнями.
+                            Следующие преобразования: перенос слагаемого из одной части в другую с изменением знака этого слагаемого; умножение или деление обеих частей уравнения на одно и то же не равное нулю число приводят уравнение к равносильному ему уравнению.
+                            </Paragraph>
+                            <Paragraph >Линейное уравнение с одной переменной - это уравнение вида a*x = b, где х — переменная, а и b - некоторые числа.
+                            </Paragraph>
+                            <List MarkerStyle="Decimal">
+                                <ListItem >
+                                    <Paragraph>Если а = 0 и b = 0, то это уравнение имеет бесконечно много решений;</Paragraph>
+                                </ListItem>
+                                <ListItem>
+                                    <Paragraph>Элемент списка 2</Paragraph>
+                                </ListItem>
+                                <ListItem>
+                                    <Paragraph>Элемент списка 3</Paragraph>
+                                </ListItem>
+                            </List>
+
+                        </FlowDocument>
+                    </RichTextBox>
+           
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
