@@ -29,10 +29,5 @@ namespace MathPractiseApplication.View.Theory.LinearEquationTheory
         {
             NavigationService.Navigate(new LinearEquationTheoryPage2());
         }
-
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
