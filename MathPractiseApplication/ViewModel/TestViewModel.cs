@@ -19,7 +19,57 @@ namespace MathPractiseApplication.ViewModel
         private int _selectedAnswer;
         private Dictionary<TestModel, int> _userAnswers;
 
-        public string AnsweredQuestionInfo => $"{CurrentQuestionIndex}/{questions.Count}";
+        public string AnsweredQuestionInfo => $"{CurrentQuestionIndex+1}/{questions.Count}";
+        public bool IsLastQuestion
+        {
+            get => _currentQuestionIndex == questions.Count - 1;
+        }
+
+        private bool _isRadioButton0Checked;
+        public bool IsRadioButton0Checked
+        {
+            get => _isRadioButton0Checked;
+            set
+            {
+                SetProperty(ref _isRadioButton0Checked, value);
+                if (value) SelectedAnswer = 0;
+            }
+        }
+
+        private bool _isRadioButton1Checked;
+        public bool IsRadioButton1Checked
+        {
+            get => _isRadioButton1Checked;
+            set
+            {
+                SetProperty(ref _isRadioButton1Checked, value);
+                if (value) SelectedAnswer = 1;
+            }
+        }
+
+        private bool _isRadioButton2Checked;
+        public bool IsRadioButton2Checked
+        {
+            get => _isRadioButton2Checked;
+            set
+            {
+                SetProperty(ref _isRadioButton2Checked, value);
+                if (value) SelectedAnswer = 2;
+            }
+        }
+
+        private bool _isRadioButton3Checked;
+        public bool IsRadioButton3Checked
+        {
+            get => _isRadioButton3Checked;
+            set
+            {
+                SetProperty(ref _isRadioButton3Checked, value);
+                if (value) SelectedAnswer = 3;
+            }
+        }
+
+
         public List<TestModel> Questions
         {
             get => questions;
@@ -36,6 +86,8 @@ namespace MathPractiseApplication.ViewModel
             {
                 _currentQuestionIndex = value;
                 OnPropertyChanged(nameof(CurrentQuestionIndex));
+                OnPropertyChanged(nameof(AnsweredQuestionInfo));
+                OnPropertyChanged(nameof(IsLastQuestion));
             }
         }
         public int SelectedAnswer
@@ -43,12 +95,10 @@ namespace MathPractiseApplication.ViewModel
             get => _selectedAnswer;
             set
             {
-                _selectedAnswer = value;
-                if (_currentQuestion != null)
+                if (_currentQuestion != null && SetProperty(ref _selectedAnswer, value))
                 {
                     _userAnswers[_currentQuestion] = value;
                 }
-                OnPropertyChanged(nameof(SelectedAnswer));
             }
         }
         public TestModel CurrentQuestion
@@ -64,7 +114,36 @@ namespace MathPractiseApplication.ViewModel
                 else
                 {
                     _userAnswers.Add(value, -1);
+                    SetProperty(ref _selectedAnswer, -1);
                 }
+
+                // Set the radio button that corresponds to the selected answer, if any.
+                if (_userAnswers.ContainsKey(value) && _userAnswers[value] >= 0)
+                {
+                    switch (_userAnswers[value])
+                    {
+                        case 0:
+                            IsRadioButton0Checked = true;
+                            break;
+                        case 1:
+                            IsRadioButton1Checked = true;
+                            break;
+                        case 2:
+                            IsRadioButton2Checked = true;
+                            break;
+                        case 3:
+                            IsRadioButton3Checked = true;
+                            break;
+                    }
+                }
+                else
+                {
+                    IsRadioButton0Checked = false;
+                    IsRadioButton1Checked = false;
+                    IsRadioButton2Checked = false;
+                    IsRadioButton3Checked = false;
+                }
+
                 OnPropertyChanged(nameof(CurrentQuestion));
             }
         }
@@ -74,6 +153,7 @@ namespace MathPractiseApplication.ViewModel
             _userAnswers = new Dictionary<TestModel, int>();
             GetNextQuestion = new ViewModelCommand(ExecuteGetNextQuestionCommand, CanExecuteNextQuestionCommand);
             GetPreviousQuestion = new ViewModelCommand(ExecuteGetPreviousQuestion, CanExecuteGetPreviousQuestion);
+            PassTest = new ViewModelCommand(ExecutePassTest, CanExecutePassTest);
             _questionsRepository = new TestQuestionExcelRepository();
             LoadQuestions();
         }
@@ -98,6 +178,15 @@ namespace MathPractiseApplication.ViewModel
 
         public ICommand GetPreviousQuestion { get; }
 
+        public ICommand PassTest { get; }
+        private void ExecutePassTest(object obj)
+        {
+            CalculateCorrectAnswers();
+        }
+        private bool CanExecutePassTest(object obj)
+        {
+            return IsLastQuestion;
+        }
 
         private void ExecuteGetPreviousQuestion(object obj)
         {
