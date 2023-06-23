@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,7 +22,9 @@ namespace MathPractiseApplication.View
     {
         public AuthorizationView()
         {
-            this.IsVisibleChanged += (s, ev) =>
+            DependencyPropertyChangedEventHandler isVisibleChangedHandler = null;
+
+            isVisibleChangedHandler = (s, ev) =>
             {
                 if (this.IsVisible == false && this.IsLoaded)
                 {
@@ -30,7 +33,15 @@ namespace MathPractiseApplication.View
                     this.Close();
                 }
             };
+
+            this.IsVisibleChanged += isVisibleChangedHandler;
+
             InitializeComponent();
+
+            this.Closing += (s, ev) =>
+            {
+                this.IsVisibleChanged -= isVisibleChangedHandler;
+            };
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -45,8 +56,8 @@ namespace MathPractiseApplication.View
 
         private void Closebtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
-            Application.Current.Shutdown();
+            
+            Close();
         }
     }
 }
