@@ -9,6 +9,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="100"/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition Height="50"></RowDefinition>
@@ -19,11 +20,11 @@
             </Grid.ColumnDefinitions>
             <Border Style="{StaticResource HeaderContentBorder}" Grid.Row="0" Grid.ColumnSpan="2">
                 <DockPanel Margin="50,0">
-                    <TextBlock Name="QuestionText"
+                    <TextBlock 
                         HorizontalAlignment="Left" 
                         Style="{StaticResource HeaderContentText}"
-                        Text="Вопрос">
-                        
+                        Text="Итоговое тестирование">
+
                     </TextBlock>
                     <TextBlock 
                             HorizontalAlignment="Right" 
@@ -31,46 +32,54 @@
                             Text="1/20"></TextBlock>
                 </DockPanel>
             </Border>
-            <Button   Grid.Column="0"
-                      Grid.Row="1"
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Center"
-                      Width="200"
-                      Content="LIGHT"
-                      Background="Transparent"
-                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                      Style="{StaticResource MaterialDesignPaperSecondaryLightButton}"
-                      ToolTip="Resource name: MaterialDesignPaperSecondaryLightButton" />
-            <Button   Grid.Column="1"
-                      Grid.Row="1"
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Center"
-                      Width="200"
-                      Content="LIGHT"
-                      Background="Transparent"
-                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                      Style="{StaticResource MaterialDesignPaperSecondaryLightButton}"
-                      ToolTip="Resource name: MaterialDesignPaperSecondaryLightButton" />
-            <Button   Grid.Column="1"
+            <Border Margin="15"
+                    BorderThickness="3"
+                    Background="#FFF999"
+                    BorderBrush="{StaticResource color6}"
+                    Grid.ColumnSpan="2" 
+                    Grid.Row="1">
+                <TextBlock Name="QuestionText">
+                    
+                </TextBlock>
+            </Border>
+            <RadioButton
+                    Grid.Column="0"
                       Grid.Row="2"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center"
                       Width="200"
                       Content="LIGHT"
-                      Background="Transparent"
-                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                      Style="{StaticResource MaterialDesignPaperSecondaryLightButton}"
-                      ToolTip="Resource name: MaterialDesignPaperSecondaryLightButton" />
-            <Button   Grid.Column="0"
+                      Background="Transparent">
+                
+            </RadioButton>
+            <RadioButton Grid.Column="0"
+                      Grid.Row="3"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Width="200"
+                      Content="LIGHT"
+                      Background="Transparent">
+
+            </RadioButton>
+            <RadioButton Grid.Column="1"
+                      Grid.Row="3"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Width="200"
+                      Content="LIGHT"
+                      Background="Transparent">
+
+            </RadioButton>
+            <RadioButton Grid.Column="1"
                       Grid.Row="2"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center"
                       Width="200"
                       Content="LIGHT"
-                      Background="Transparent"
-                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                      Style="{StaticResource MaterialDesignPaperSecondaryLightButton}"
-                      ToolTip="Resource name: MaterialDesignPaperSecondaryLightButton" />
+                      Background="Transparent">
+
+            </RadioButton>
+           
 
         </Grid>
     </Border>
