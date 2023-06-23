@@ -21,6 +21,15 @@ namespace MathPractiseApplication.View
     {
         public AuthorizationView()
         {
+            this.IsVisibleChanged += (s, ev) =>
+            {
+                if (this.IsVisible == false && this.IsLoaded)
+                {
+                    var mainView = new Main();
+                    mainView.Show();
+                    this.Close();
+                }
+            };
             InitializeComponent();
         }
 

@@ -32,15 +32,7 @@ namespace MathPractiseApplication
 
             var AuthorizationView = new AuthorizationView();
             AuthorizationView.Show();
-            AuthorizationView.IsVisibleChanged += (s, ev) =>
-            {
-                if (AuthorizationView.IsVisible == false && AuthorizationView.IsLoaded)
-                {
-                    var mainView = new Main();
-                    mainView.Show();
-                    AuthorizationView.Close();
-                }
-            };
+            
         }
     }
 }
