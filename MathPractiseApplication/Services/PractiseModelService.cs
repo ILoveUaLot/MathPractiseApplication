@@ -26,6 +26,9 @@ namespace MathPractiseApplication.Services
             {
                 double a = random.NextDouble() * 10;
                 double b = random.NextDouble() * 10;
+
+                a = Math.Round(a, 2);
+                b = Math.Round(b, 2);
                 double answer = -b / a;
                 string problem = $"{a}x + {b} = 0";
                 return new PractiseModel { Question = problem, Answer = answer };
@@ -38,6 +41,13 @@ namespace MathPractiseApplication.Services
                 double c = random.NextDouble() * 10;
                 double d = random.NextDouble() * 10;
                 double f = random.NextDouble() * 10;
+                //округляем до 2 знаков после запятой
+                a = Math.Round(a, 2);
+                b = Math.Round(b, 2);
+                e = Math.Round(e, 2);
+                c = Math.Round(c, 2);
+                d = Math.Round(d, 2);
+                f = Math.Round(f, 2);
 
                 double y = (f * a - c * e) / (d * a - b * c);
                 double x = (e - b * y) / a;
