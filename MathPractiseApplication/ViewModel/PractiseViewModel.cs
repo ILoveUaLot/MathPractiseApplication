@@ -58,6 +58,11 @@ namespace MathPractiseApplication.ViewModel
         }
 
         public ICommand CheckAnswerCommand { get; }
+        public ICommand ReplaceQuestionCommand { get; }
+        public void ExecuteReplaceQuestionCommand (object obj)
+        {
+            GenerateNewProblem();
+        }
         private void ExecuteCheckAnswerCommand(object obj)
         {
             if (_practiseService.CheckAnswer(_currentPractiseQuestion, double.Parse(UserAnswer)))
@@ -71,13 +76,13 @@ namespace MathPractiseApplication.ViewModel
                 ResultMessage = "Попробуйте еще раз!";
                 IsCorrectAnswer = false;
             }
-            UserAnswer = null;
             MessageBox.Show(ResultMessage);
         }
         private bool CanExecuteCheckAnswerCommand(object obj)
         {
             bool validData = false;
-            if(UserAnswer != null)
+            double result;
+            if(UserAnswer != null && UserAnswer != "" && double.TryParse(UserAnswer, out result))
                 validData = true;
             return validData;
         }
@@ -93,6 +98,7 @@ namespace MathPractiseApplication.ViewModel
         private void GenerateNewProblem()
         {
             _currentPractiseQuestion = _practiseService.GenerateQuestion();
+            UserAnswer = null;
             OnPropertyChanged(nameof(CurrentPractiseQuestion));
         }
     }
