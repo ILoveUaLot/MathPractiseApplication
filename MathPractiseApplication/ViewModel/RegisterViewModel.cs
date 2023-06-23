@@ -7,6 +7,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MathPractiseApplication.ViewModel
@@ -69,6 +70,10 @@ namespace MathPractiseApplication.ViewModel
                 userRepository.Add(newUser);
                 Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), null);
                 IsViewVisible = false;
+            }
+            else
+            {
+                MessageBox.Show("Пользователь с данным username уже был создан");
             }
             Username = "";
             Password = "";
