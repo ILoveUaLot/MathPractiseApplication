@@ -48,7 +48,7 @@ namespace MathPractiseApplication.Repositories
             worksheetTest.Cells[lastUsedRow + 1, 4].Value = test.Answers[1];
             worksheetTest.Cells[lastUsedRow + 1, 5].Value = test.Answers[2];
             worksheetTest.Cells[lastUsedRow + 1, 6].Value = test.Answers[3];
-            worksheetTest.Cells[lastUsedRow + 1, 7].Value = test.RightAnswer;
+            worksheetTest.Cells[lastUsedRow + 1, 7].Value = test.IndexOfRightAnswer;
             testQuestionPackage.SaveAs(new FileInfo(filePath));
         }
 
@@ -69,7 +69,7 @@ namespace MathPractiseApplication.Repositories
                         worksheetTest.Cells[row, 4].Value = test.Answers[1];
                         worksheetTest.Cells[row, 5].Value = test.Answers[2];
                         worksheetTest.Cells[row, 6].Value = test.Answers[3];
-                        worksheetTest.Cells[row, 7].Value = test.RightAnswer;
+                        worksheetTest.Cells[row, 7].Value = test.IndexOfRightAnswer;
                         break;
                     }
                 }
@@ -90,12 +90,12 @@ namespace MathPractiseApplication.Repositories
                 {
                     string question = worksheetTest.Cells[row, 2].Value.ToString();
                     List<string> answers = new List<string>
-                {
-                    worksheetTest.Cells[row, 3].Value.ToString(),
-                    worksheetTest.Cells[row, 4].Value.ToString(),
-                    worksheetTest.Cells[row, 5].Value.ToString(),
-                    worksheetTest.Cells[row, 6].Value.ToString()
-                };
+                    {
+                        worksheetTest.Cells[row, 3].Value.ToString(),
+                        worksheetTest.Cells[row, 4].Value.ToString(),
+                        worksheetTest.Cells[row, 5].Value.ToString(),
+                        worksheetTest.Cells[row, 6].Value.ToString()
+                    };
                     int rightAnswer = Convert.ToInt32(worksheetTest.Cells[row, 7].Value);
 
                     TestModel test = new TestModel
@@ -103,7 +103,7 @@ namespace MathPractiseApplication.Repositories
                         Id = row - 1,
                         Question = question,
                         Answers = answers,
-                        RightAnswer = rightAnswer
+                        IndexOfRightAnswer = rightAnswer
                     };
 
                     questions.Add(test);
