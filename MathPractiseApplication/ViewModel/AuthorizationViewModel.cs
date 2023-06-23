@@ -47,7 +47,6 @@ namespace MathPractiseApplication.ViewModel
         private void ExecuteShowLoginViewCommand(object obj)
         {
             CurentChildView = new LoginView();
-//            (CurentChildView.DataContext as LoginVM).IsViewVisible = true;
         }
     }
 }
