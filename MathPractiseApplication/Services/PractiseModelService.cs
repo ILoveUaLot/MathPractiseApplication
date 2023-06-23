@@ -51,7 +51,7 @@ namespace MathPractiseApplication.Services
 
                 double y = (f * a - c * e) / (d * a - b * c);
                 double x = (e - b * y) / a;
-                string problem = $"{a}x + {b}y = {e}, {c}x + {d}y = {f}";
+                string problem = $"{a}x + {b}y = {e}\n{c}x + {d}y = {f}";
                 return new PractiseModel { Question = problem, Answer = Math.Round(x, 2) }; //ищем значение 'x'. 
             }
         }
