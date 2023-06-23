@@ -14,6 +14,9 @@
         <Style TargetType="Button" BasedOn="{StaticResource switchPageButton}"/>
         <Style TargetType="material:PackIcon" BasedOn="{StaticResource switchPageButtonIcon}"/>
         <Style TargetType="RadioButton">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+            <Setter Property="Background" Value="Transparent"/>
             <Style.Triggers>
                 <Trigger Property="IsChecked" Value="True">
                     <Setter Property="Background" Value="Green"/>
@@ -66,50 +69,85 @@
                     
                 </TextBlock>
             </Border>
-            <RadioButton IsChecked="{Binding IsRadioButton0Checked}"
-                        Grid.Column="0"
-                        Grid.Row="2"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Width="350"
-                        Background="Transparent">
+            <Grid Grid.Column="0"
+                  Grid.Row="2"
+                  Margin="20,0,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <RadioButton IsChecked="{Binding IsRadioButton0Checked}" 
+                 Grid.Column="0" />
+
                 <TextBlock Text="{Binding CurrentQuestion.Answers[0], UpdateSourceTrigger=PropertyChanged}"
                            TextWrapping="Wrap"
-                           Style="{StaticResource AnswerText}"></TextBlock>
-            </RadioButton>
-            <RadioButton IsChecked="{Binding IsRadioButton2Checked}"
-                        Grid.Column="0"
-                        Grid.Row="3"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Width="350"
-                        Background="Transparent">
+                           FontSize="28"
+                           Style="{StaticResource AnswerText}"
+                           Grid.Column="1"/>
+            </Grid>
+
+            <Grid Grid.Column="0"
+                  Grid.Row="3"
+                  Margin="20,0,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <RadioButton IsChecked="{Binding IsRadioButton2Checked}" 
+                 Grid.Column="0"/>
+
                 <TextBlock Text="{Binding CurrentQuestion.Answers[2], UpdateSourceTrigger=PropertyChanged}"
-                           TextWrapping="Wrap"
-                           Style="{StaticResource AnswerText}"></TextBlock>
-            </RadioButton>
-            <RadioButton IsChecked="{Binding IsRadioButton3Checked}"
-                        Grid.Column="1"
-                        Grid.Row="3"
-                        Width="350"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Background="Transparent">
+               TextWrapping="Wrap"
+               FontSize="28"
+               Style="{StaticResource AnswerText}"
+               Grid.Column="1"/>
+            </Grid>
+
+            <Grid Grid.Column="1"
+                  Grid.Row="3"
+                  Margin="20,0,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <RadioButton IsChecked="{Binding IsRadioButton3Checked}" 
+                 Grid.Column="0"/>
+
                 <TextBlock Text="{Binding CurrentQuestion.Answers[3], UpdateSourceTrigger=PropertyChanged}"
-                           TextWrapping="Wrap"
-                           Style="{StaticResource AnswerText}"></TextBlock>
-            </RadioButton>
-            <RadioButton IsChecked="{Binding IsRadioButton1Checked}"
-                        Grid.Column="1"
-                        Grid.Row="2"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Width="350"
-                        Background="Transparent">
+               TextWrapping="Wrap"
+               FontSize="28"
+               Style="{StaticResource AnswerText}"
+               Grid.Column="1"/>
+            </Grid>
+
+            <Grid Grid.Column="1"
+                  Grid.Row="2"
+                  Margin="20,0,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <RadioButton IsChecked="{Binding IsRadioButton1Checked}" 
+                 Grid.Column="0"/>
+
                 <TextBlock  Style="{StaticResource AnswerText}"
-                            Text="{Binding CurrentQuestion.Answers[1], UpdateSourceTrigger=PropertyChanged}"
-                            TextWrapping="Wrap"></TextBlock>
-            </RadioButton>
+                FontSize="28"
+                Text="{Binding CurrentQuestion.Answers[1], UpdateSourceTrigger=PropertyChanged}"
+                TextWrapping="Wrap"
+                Grid.Column="1"/>
+            </Grid>
 
             <StackPanel Grid.Row="5" Grid.ColumnSpan="2"
                     Orientation="Horizontal"
