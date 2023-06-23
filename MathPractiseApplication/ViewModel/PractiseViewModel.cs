@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace MathPractiseApplication.ViewModel
 {
@@ -13,7 +15,7 @@ namespace MathPractiseApplication.ViewModel
     {
         private readonly IPractiseService _practiseService;
         private PractiseModel _currentPractiseQuestion;
-        private double _userAnswer;
+        private string _userAnswer;
         private string _resultMessage;
         public string ResultMessage
         {
@@ -42,35 +44,47 @@ namespace MathPractiseApplication.ViewModel
             }
         }
 
-        public double UserAnswer
+        public string UserAnswer
         {
-            get => _userAnswer; 
+            get
+            {
+                return _userAnswer;
+            } 
             set
             {
-                if(_userAnswer != value)
-                {
-                    _userAnswer = value;
-                    OnPropertyChanged(nameof(UserAnswer));
-
-                    if (_practiseService.CheckAnswer(_currentPractiseQuestion, _userAnswer))
-                    {
-                        ResultMessage = "Ответ верный!";
-                        IsCorrectAnswer = true;
-                        GenerateNewProblem();
-                    }
-                    else
-                    {
-                        ResultMessage = "Попробуйте еще раз!";
-                        IsCorrectAnswer = false;
-                    }
-                }
-                
+                _userAnswer = value;
+                OnPropertyChanged(nameof(UserAnswer));   
             }
         }
 
+        public ICommand CheckAnswerCommand { get; }
+        private void ExecuteCheckAnswerCommand(object obj)
+        {
+            if (_practiseService.CheckAnswer(_currentPractiseQuestion, double.Parse(UserAnswer)))
+            {
+                ResultMessage = "Ответ верный!";
+                IsCorrectAnswer = true;
+                GenerateNewProblem();
+            }
+            else
+            {
+                ResultMessage = "Попробуйте еще раз!";
+                IsCorrectAnswer = false;
+            }
+            UserAnswer = null;
+            MessageBox.Show(ResultMessage);
+        }
+        private bool CanExecuteCheckAnswerCommand(object obj)
+        {
+            bool validData = false;
+            if(UserAnswer != null)
+                validData = true;
+            return validData;
+        }
         public PractiseViewModel()
         {
             _practiseService = ServiceLocator.ServiceProvider.GetService<IPractiseService>();
+            CheckAnswerCommand = new ViewModelCommand(ExecuteCheckAnswerCommand, CanExecuteCheckAnswerCommand);     
             GenerateNewProblem();
         }
 
