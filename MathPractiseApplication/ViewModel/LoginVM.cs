@@ -90,6 +90,7 @@ namespace MathPractiseApplication.ViewModel
             else
             {
                 ErrorMessage = "Invalid username or password";
+                MessageBox.Show(ErrorMessage);
             }
         }
     }
