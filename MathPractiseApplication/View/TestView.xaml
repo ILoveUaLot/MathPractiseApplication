@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:viewmodel="clr-namespace:MathPractiseApplication.ViewModel"
-             xmlns:converters="clr-namespace:MathPractiseApplication.Converters"
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -11,7 +11,8 @@
         <viewmodel:TestViewModel></viewmodel:TestViewModel>
     </UserControl.DataContext>
     <UserControl.Resources>
-        <converters:IndexToBoolConverter x:Key="IndexToBoolConverter" />
+        <Style TargetType="Button" BasedOn="{StaticResource switchPageButton}"/>
+        <Style TargetType="material:PackIcon" BasedOn="{StaticResource switchPageButtonIcon}"/>
     </UserControl.Resources>
     <Border Style="{StaticResource contentBorder}">
         <Grid>
@@ -47,24 +48,75 @@
                     Grid.ColumnSpan="2" 
                     Grid.Row="1">
                 <TextBlock Name="QuestionText"
+                           Style="{StaticResource QuestionText}"
+                           FontSize="20"
+                           Foreground="Black"
+                           TextWrapping="Wrap"
                            Text="{Binding CurrentQuestion.Question}">
+                    
                 </TextBlock>
             </Border>
+            <RadioButton
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Width="350"
+                        Background="Transparent">
+                <TextBlock Text="{Binding CurrentQuestion.Answers[0], UpdateSourceTrigger=PropertyChanged}"
+                           TextWrapping="Wrap"
+                           Style="{StaticResource AnswerText}"></TextBlock>
+            </RadioButton>
+            <RadioButton 
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Width="350"
+                        Background="Transparent">
+                <TextBlock Text="{Binding CurrentQuestion.Answers[2], UpdateSourceTrigger=PropertyChanged}"
+                           TextWrapping="Wrap"
+                           Style="{StaticResource AnswerText}"></TextBlock>
+            </RadioButton>
+            <RadioButton 
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        Width="350"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Background="Transparent">
+                <TextBlock Text="{Binding CurrentQuestion.Answers[3], UpdateSourceTrigger=PropertyChanged}"
+                           TextWrapping="Wrap"
+                           Style="{StaticResource AnswerText}"></TextBlock>
+            </RadioButton>
+            <RadioButton 
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Width="350"
+                        Background="Transparent">
+                <TextBlock  Style="{StaticResource AnswerText}"
+                            Text="{Binding CurrentQuestion.Answers[1], UpdateSourceTrigger=PropertyChanged}"
+                            TextWrapping="Wrap"></TextBlock>
+            </RadioButton>
 
-            <ItemsControl ItemsSource="{Binding CurrentQuestion.Answers}"
-                          Grid.Row="2" Grid.ColumnSpan="2">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <RadioButton Content="{Binding}"
-                                     Tag="{Binding RelativeSource={RelativeSource Self}}"
-                                     IsChecked="{Binding Path=DataContext.SelectedAnswer, 
-                                                         RelativeSource={RelativeSource AncestorType=ItemsControl},
-                                                         Converter={StaticResource IndexToBoolConverter}, 
-                                                         ConverterParameter={Binding RelativeSource={RelativeSource Self}}}"
-                                     Background="Transparent"/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            <StackPanel Grid.Row="5" Grid.ColumnSpan="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+                <Button 
+                    Cursor="Hand"
+                    Command="{Binding GetPreviousQuestion}"
+                >
+                    <material:PackIcon Kind="ArrowBack"/>
+                </Button>
+                <Button 
+                    Cursor="Hand"
+                    Command="{Binding GetNextQuestion}"
+                >
+                    <material:PackIcon Kind="ArrowForward"/>
+                </Button>
+            </StackPanel>
         </Grid>
     </Border>
 </UserControl>
