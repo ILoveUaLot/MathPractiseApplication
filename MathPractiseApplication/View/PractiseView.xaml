@@ -29,36 +29,55 @@
                 </DockPanel>
             </Border>
             <Border Grid.Row="1">
-                <TextBlock HorizontalAlignment="Center" 
-                           VerticalAlignment="Center"
+                <TextBlock Style="{StaticResource QuestionText}"
                            Text="{Binding CurrentPractiseQuestion}"/>
             </Border>
-            <StackPanel Orientation="Horizontal" Grid.Row="2">
-                <Border Style="{StaticResource AnswerBorder}">
+            
+            <Grid Grid.Row="2" Margin="0,0,50,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Style="{StaticResource AnswerBorder}" Grid.Column="0">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" 
-                               Text="Ответ:"
-                               Style="{StaticResource HeaderContentText}"></TextBlock>
+                            Text="Ответ:"
+                            Style="{StaticResource HeaderContentText}"></TextBlock>
                         <TextBox Grid.Column="1"
-                             Margin="0,0,20,0"
-                             VerticalAlignment="Center"
-                             Text="{Binding UserAnswer,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            Margin="0,0,20,0"
+                            VerticalAlignment="Center"
+                            Text="{Binding UserAnswer,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </Grid>
                 </Border>
-                <Button x:Name="CheckAnswerButton"
-                        Width="50" 
-                        Height="50" 
-                        Command="{Binding CheckAnswerCommand}"
-                        Background="{StaticResource activePanelColor}"
-                        Cursor="Hand"
-                        Tag="{StaticResource color3}">
-                    <material:PackIcon Style="{StaticResource controlButtonIcon}" Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" Kind="TickAll"/>
-                </Button>
-            </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
+                    <Button x:Name="CheckAnswerButton"
+                    Width="50" 
+                    Height="50" 
+                    Command="{Binding CheckAnswerCommand}"
+                    Background="{StaticResource activePanelColor}"
+                    Cursor="Hand"
+                    Tag="{StaticResource color3}">
+                        <material:PackIcon Style="{StaticResource controlButtonIcon}" Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" Kind="TickAll"/>
+                    </Button>
+                    <Button x:Name="ReplaceQuestionButton"
+                    Width="50" 
+                    Height="50" 
+                    Margin="20,0,0,0"
+                    Command="{Binding ReplaceQuestionCommand}"
+                    Background="{StaticResource activePanelColor}"
+                    Cursor="Hand"
+                    Tag="{StaticResource color3}">
+                        <material:PackIcon Style="{StaticResource controlButtonIcon}" 
+                                    Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" 
+                                    Kind="Replay"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            
             
         </Grid>
     </Border>
