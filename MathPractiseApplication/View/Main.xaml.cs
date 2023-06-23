@@ -52,5 +52,13 @@ namespace MathPractiseApplication.View
         {
             WindowState = WindowState.Minimized;
         }
+
+        private void ExitToAuthbtn(object sender, RoutedEventArgs e)
+        {
+            new AuthorizationView().Show();
+
+            Close();
+            
+        }
     }
 }
