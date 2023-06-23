@@ -13,7 +13,7 @@ namespace MathPractiseApplication.Repositories
     public class UserExcelRepository : IUserRepository
     {
         ExcelPackage userPackage;
-        string filePath ="Data/Users.xmlx";
+        string filePath ="Data/Users.xlsx";
 
         public UserExcelRepository()
         {
