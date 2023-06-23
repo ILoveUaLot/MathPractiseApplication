@@ -8,6 +8,7 @@ namespace MathPractiseApplication.Models
 {
     public class PractiseModel
     {
-        string Question { get; set; }
+        public string Question { get; set; }
+        public double Answer { get; set; }
     }
 }
