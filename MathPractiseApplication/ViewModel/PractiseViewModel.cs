@@ -89,7 +89,8 @@ namespace MathPractiseApplication.ViewModel
         public PractiseViewModel()
         {
             _practiseService = ServiceLocator.ServiceProvider.GetService<IPractiseService>();
-            CheckAnswerCommand = new ViewModelCommand(ExecuteCheckAnswerCommand, CanExecuteCheckAnswerCommand);     
+            CheckAnswerCommand = new ViewModelCommand(ExecuteCheckAnswerCommand, CanExecuteCheckAnswerCommand);
+            ReplaceQuestionCommand = new ViewModelCommand(ExecuteReplaceQuestionCommand);
             GenerateNewProblem();
         }
 
