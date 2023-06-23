@@ -19,12 +19,43 @@ namespace MathPractiseApplication.ViewModel
         private User _userAccount;
         private UserAccountModel _userAccountModel;
         private UserControl _currentChildView;
+        private WindowState _windowState;
+        private bool _navBarVisibility;
+
+        public bool NavBarVisibility
+        {
+            get => _navBarVisibility;
+            set
+            {
+                _navBarVisibility = value;
+                OnPropertyChanged(nameof(NavBarVisibility));
+            }
+        }
+        public WindowState MainWindowState
+        {
+            get => _windowState; 
+            set
+            {
+                _windowState = value;
+                OnPropertyChanged(nameof(MainWindowState));
+            }
+        }
         public UserControl CurrentChildView
         {
             get => _currentChildView; 
             set
             {
                 _currentChildView = value;
+                if(value is TestView)
+                {
+                    MainWindowState = WindowState.Maximized;
+                    NavBarVisibility = false;
+                }
+                else
+                {
+                    MainWindowState = WindowState.Normal;
+                    NavBarVisibility = true;
+                }
                 OnPropertyChanged(nameof(CurrentChildView));
             }
         }
@@ -49,6 +80,8 @@ namespace MathPractiseApplication.ViewModel
 
         public MainViewModel()
         {
+            MainWindowState = WindowState.Normal;
+            NavBarVisibility = true;
             _userRepository = new UserExcelRepository();
             ShowTheoryViewCommand = new ViewModelCommand(ExecuteShowTheoryViewCommand);
             ShowPractiseViewCommand = new ViewModelCommand(ExecuteShowPractiseViewCommand);
@@ -62,6 +95,8 @@ namespace MathPractiseApplication.ViewModel
         public ICommand ShowTestViewCommand { get; }
         
         public ICommand ShowHomeViewCommand { get; }
+        
+
         public void ExecuteShowHomeViewCommand(object obj)
         {
             CurrentChildView = new HomeView();

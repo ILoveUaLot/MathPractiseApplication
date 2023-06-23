@@ -10,6 +10,7 @@
         Title="Main" Height="700" Width="1300"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
+        WindowState="{Binding MainWindowState, UpdateSourceTrigger=PropertyChanged}"
         Background="Transparent"
         AllowsTransparency="True"
         >
@@ -37,6 +38,7 @@
             
             <!--navigation menu-->
             <Border CornerRadius="10,0,0,10"
+                    
                     Grid.Column="0"
                     BorderThickness="3,3,0,3"
                     BorderBrush="Black">
@@ -47,7 +49,8 @@
                     </LinearGradientBrush>
                 </Border.Background>
 
-                <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Vertical"
+                            Visibility="{Binding NavBarVisibility, Converter={StaticResource BooleanToVisibilityConverter}}">
                     
                     <StackPanel Orientation="Horizontal"
                             Height="50"
