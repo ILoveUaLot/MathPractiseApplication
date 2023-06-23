@@ -10,7 +10,7 @@ namespace MathPractiseApplication.Models
     {
         public int Id { get; set; }
         public string Question { get; set; }
-        public string[] Answers { get; set; }
-        public string RightAnswer { get; set; }
+        public List<string> Answers { get; set; }
+        public int IndexOfRightAnswer { get; set; }
     }
 }
