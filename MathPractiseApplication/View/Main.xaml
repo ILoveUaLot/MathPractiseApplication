@@ -99,7 +99,8 @@
                             <TextBlock Text="Тест" Style="{StaticResource menuButtonText}"></TextBlock>
                         </StackPanel>
                     </RadioButton>
-                    <RadioButton Style="{StaticResource menuButton}" 
+                    <RadioButton Click="ExitToAuthbtn"
+                                 Style="{StaticResource menuButton}" 
                                  Tag="{StaticResource color2}">
                         <StackPanel Orientation="Horizontal" >
                             <material:PackIcon Style="{StaticResource menuButtonIcon}" Kind="PresenceExit"></material:PackIcon>
