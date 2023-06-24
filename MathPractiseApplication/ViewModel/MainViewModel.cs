@@ -23,7 +23,17 @@ namespace MathPractiseApplication.ViewModel
         private UserControl _currentChildView;
         private WindowState _windowState;
         private bool _testingViewVisibility;
+        private bool _currentChildViewIsHome;
 
+        public bool CurrentChildViewIsHome
+        {
+            get => _currentChildViewIsHome;
+            set
+            {
+                _currentChildViewIsHome = value;
+                OnPropertyChanged(nameof(CurrentChildViewIsHome));
+            }
+        }
         public bool TestingViewVisibility
         {
             get => _testingViewVisibility;
@@ -48,12 +58,14 @@ namespace MathPractiseApplication.ViewModel
             set
             {
                 _currentChildView = value;
-                if(value is TestView)
+                if (value is TestView)
                 {
                     TestingViewVisibility = true;
                     MainWindowState = WindowState.Maximized;
                 }
+                CurrentChildViewIsHome = value is HomeView;
                 OnPropertyChanged(nameof(CurrentChildView));
+                OnPropertyChanged(nameof(CurrentChildViewIsHome));
             }
         }
         public UserAccountModel UserAccountModel

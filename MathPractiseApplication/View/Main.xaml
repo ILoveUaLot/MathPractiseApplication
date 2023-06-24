@@ -76,7 +76,8 @@
                     <!--Menu buttons-->
                     <RadioButton Style="{StaticResource menuButton}"
                                  Tag="{StaticResource color1}"
-                                 Command="{Binding ShowHomeViewCommand}">
+                                 Command="{Binding ShowHomeViewCommand}"
+                                 IsChecked="{Binding CurrentChildViewIsHome}">
                         <StackPanel Orientation="Horizontal">
                             <material:PackIcon Style="{StaticResource menuButtonIcon}" Kind="Home"></material:PackIcon>
                             <TextBlock Text="Главная" Style="{StaticResource menuButtonText}"></TextBlock>
