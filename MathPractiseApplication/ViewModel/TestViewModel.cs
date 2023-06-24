@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -18,6 +19,7 @@ namespace MathPractiseApplication.ViewModel
     {
         private List<TestModel> questions;
         private ITestQuestionsRepository _questionsRepository;
+        private IUserRepository _userRepository;
         private TestModel _currentQuestion;
         private int _currentQuestionIndex;
         private int _correctAnswers = 0;
@@ -177,6 +179,7 @@ namespace MathPractiseApplication.ViewModel
             PassTest = new ViewModelCommand(ExecutePassTest, CanExecutePassTest);
 
             _questionsRepository = new TestQuestionExcelRepository();
+            _userRepository = new UserExcelRepository();
             LoadQuestions();
         }
 
@@ -239,7 +242,9 @@ namespace MathPractiseApplication.ViewModel
         public int CalculateCorrectAnswers()
         {
             _correctAnswers = _userAnswers.Count(kvp => kvp.Key.IndexOfRightAnswer == kvp.Value);
+            
             Messenger.Default.Send(new VisibilityChangedMessage(false));
+            _userRepository.Edit(_userRepository.UserGetByName(Thread.CurrentPrincipal.Identity.Name));
             return _correctAnswers;
         }
     }
