@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:MathPractiseApplication.View"
         xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:viewModel="clr-namespace:MathPractiseApplication.ViewModel"
+        xmlns:converter="clr-namespace:MathPractiseApplication.Converters"
         mc:Ignorable="d"
         Title="Main" Height="700" Width="1300"
         WindowStyle="None"
@@ -17,6 +18,9 @@
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <converter:InverseVisibilityConverter x:Key="InverseVisibilityConverter"/>
+    </Window.Resources>
     <Border
             CornerRadius="15"
             BorderThickness="3">
@@ -50,7 +54,7 @@
                 </Border.Background>
 
                 <StackPanel Orientation="Vertical"
-                            Visibility="{Binding NavBarVisibility, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            Visibility="{Binding TestingViewVisibility, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
                     
                     <StackPanel Orientation="Horizontal"
                             Height="50"

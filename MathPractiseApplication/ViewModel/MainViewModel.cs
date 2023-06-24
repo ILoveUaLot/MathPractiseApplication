@@ -1,4 +1,6 @@
-﻿using MathPractiseApplication.Models;
+﻿using GalaSoft.MvvmLight.Messaging;
+using MathPractiseApplication.Messages;
+using MathPractiseApplication.Models;
 using MathPractiseApplication.Repositories;
 using MathPractiseApplication.View;
 using System;
@@ -20,15 +22,15 @@ namespace MathPractiseApplication.ViewModel
         private UserAccountModel _userAccountModel;
         private UserControl _currentChildView;
         private WindowState _windowState;
-        private bool _navBarVisibility;
+        private bool _testingViewVisibility;
 
-        public bool NavBarVisibility
+        public bool TestingViewVisibility
         {
-            get => _navBarVisibility;
+            get => _testingViewVisibility;
             set
             {
-                _navBarVisibility = value;
-                OnPropertyChanged(nameof(NavBarVisibility));
+                _testingViewVisibility = value;
+                OnPropertyChanged(nameof(TestingViewVisibility));
             }
         }
         public WindowState MainWindowState
@@ -48,13 +50,8 @@ namespace MathPractiseApplication.ViewModel
                 _currentChildView = value;
                 if(value is TestView)
                 {
+                    TestingViewVisibility = true;
                     MainWindowState = WindowState.Maximized;
-                    NavBarVisibility = false;
-                }
-                else
-                {
-                    MainWindowState = WindowState.Normal;
-                    NavBarVisibility = true;
                 }
                 OnPropertyChanged(nameof(CurrentChildView));
             }
@@ -81,12 +78,21 @@ namespace MathPractiseApplication.ViewModel
         public MainViewModel()
         {
             MainWindowState = WindowState.Normal;
-            NavBarVisibility = true;
-            _userRepository = new UserExcelRepository();
+
+            Messenger.Default.Register<VisibilityChangedMessage>(this, msg =>
+            {
+                TestingViewVisibility = msg.IsVisible;
+                if (!TestingViewVisibility)
+                    ExecuteShowHomeViewCommand(null);
+            });
+
+            
             ShowTheoryViewCommand = new ViewModelCommand(ExecuteShowTheoryViewCommand);
             ShowPractiseViewCommand = new ViewModelCommand(ExecuteShowPractiseViewCommand);
             ShowTestViewCommand = new ViewModelCommand(ExecuteShowTestViewCommand);
             ShowHomeViewCommand = new ViewModelCommand(ExecuteShowHomeViewCommand);
+
+            _userRepository = new UserExcelRepository();
             LoadCurrentUser();
         }
 

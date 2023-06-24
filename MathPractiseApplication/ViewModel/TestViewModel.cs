@@ -1,10 +1,15 @@
-﻿using MathPractiseApplication.Models;
+﻿using GalaSoft.MvvmLight.Messaging;
+using MathPractiseApplication.Messages;
+using MathPractiseApplication.Models;
 using MathPractiseApplication.Repositories;
+using MathPractiseApplication.Services;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MathPractiseApplication.ViewModel
@@ -25,6 +30,17 @@ namespace MathPractiseApplication.ViewModel
             get => _currentQuestionIndex == questions.Count - 1;
         }
 
+
+        private bool _testViewVisibility;
+        public bool TestViewVisibility
+        {
+            get => _testViewVisibility;
+            set
+            {
+                _testViewVisibility = value;
+                OnPropertyChanged(nameof(TestViewVisibility));
+            }
+        }
         private bool _isRadioButton0Checked;
         public bool IsRadioButton0Checked
         {
@@ -150,14 +166,24 @@ namespace MathPractiseApplication.ViewModel
 
         public TestViewModel()
         {
+            var _messenger = ServiceLocator.ServiceProvider.GetService<IMessenger>();
+            _messenger.Register<VisibilityChangedMessage>(this, OnVisibilityChanged);
+
+            TestViewVisibility = true;
             _userAnswers = new Dictionary<TestModel, int>();
+
             GetNextQuestion = new ViewModelCommand(ExecuteGetNextQuestionCommand, CanExecuteNextQuestionCommand);
             GetPreviousQuestion = new ViewModelCommand(ExecuteGetPreviousQuestion, CanExecuteGetPreviousQuestion);
             PassTest = new ViewModelCommand(ExecutePassTest, CanExecutePassTest);
+
             _questionsRepository = new TestQuestionExcelRepository();
             LoadQuestions();
         }
 
+        private void OnVisibilityChanged(VisibilityChangedMessage message)
+        {
+            TestViewVisibility = message.IsVisible;
+        }
         private void LoadQuestions()
         {
             var allQuestions = _questionsRepository.GetQuestions();
@@ -213,6 +239,7 @@ namespace MathPractiseApplication.ViewModel
         public int CalculateCorrectAnswers()
         {
             _correctAnswers = _userAnswers.Count(kvp => kvp.Key.IndexOfRightAnswer == kvp.Value);
+            Messenger.Default.Send(new VisibilityChangedMessage(false));
             return _correctAnswers;
         }
     }
