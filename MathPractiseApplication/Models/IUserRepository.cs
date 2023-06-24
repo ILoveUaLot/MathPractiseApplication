@@ -15,5 +15,6 @@ namespace MathPractiseApplication.Models
         void Remove(int id);
         User UserGetById(int id);
         User UserGetByName(string username);
+        List<User> GetAllUsers();
     }
 }
