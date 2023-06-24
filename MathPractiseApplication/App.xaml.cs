@@ -1,4 +1,5 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using GalaSoft.MvvmLight.Messaging;
+using MaterialDesignThemes.Wpf;
 using MathPractiseApplication.Services;
 using MathPractiseApplication.View;
 using MathPractiseApplication.ViewModel;
@@ -25,7 +26,7 @@ namespace MathPractiseApplication
 
             serviceCollection.AddTransient<IPractiseService, PractiseModelService>();
             serviceCollection.AddTransient<PractiseViewModel>();
-
+            serviceCollection.AddSingleton<IMessenger, Messenger>();
             var serviceProvider = serviceCollection.BuildServiceProvider();
             ServiceLocator.Initialize(serviceProvider);
 
