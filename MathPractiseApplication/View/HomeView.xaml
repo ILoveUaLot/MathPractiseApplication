@@ -4,9 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MathPractiseApplication.View"
+             xmlns:viewmodel="clr-namespace:MathPractiseApplication.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="Transparent">
+    <UserControl.DataContext>
+        <viewmodel:HomeViewModel/>
+    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -20,28 +24,61 @@
         <Border Grid.Row="0" Grid.Column="0"
                 Style="{StaticResource contentBorder}"
                 >
-            <Border Style="{StaticResource HeaderContentBorder}">
-                <TextBlock Style="{StaticResource HeaderContentText}"
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Style="{StaticResource HeaderContentBorder}">
+                    <TextBlock Style="{StaticResource HeaderContentText}"
                            Text="Последний результат"></TextBlock>
-            </Border>
+                </Border>
+                <Border Grid.Row="1" CornerRadius="0,0,20,20">
+                    <TextBlock VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Text="{Binding TestStat}"></TextBlock>
+                </Border>
+            </Grid>
+
         </Border>
 
         <Border Grid.Row="0" Grid.Column="1"
                 Style="{StaticResource contentBorder}">
-            <Border Style="{StaticResource HeaderContentBorder}">
-                <TextBlock Style="{StaticResource HeaderContentText}"
-                           Text="Практика"></TextBlock>
-            </Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Style="{StaticResource HeaderContentBorder}">
+                    <TextBlock Style="{StaticResource HeaderContentText}"
+                           Text="Решено из тренажера"></TextBlock>
+                </Border>
+                <Border Grid.Row="1" CornerRadius="0,0,20,20">
+                    <TextBlock VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Text="{Binding PractiseStat}"></TextBlock>
+                </Border>
+            </Grid>
         </Border>
 
         <Border Grid.Row="0" Grid.Column="2"
                 Grid.RowSpan="2"
                 Style="{StaticResource contentBorder}"
                 >
-            <Border Style="{StaticResource HeaderContentBorder}">
-                <TextBlock Style="{StaticResource HeaderContentText}"
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Style="{StaticResource HeaderContentBorder}">
+                    <TextBlock Style="{StaticResource HeaderContentText}"
                            Text="Статистика"></TextBlock>
-            </Border>
+                </Border>
+                <Border Grid.Row="1" CornerRadius="0,0,20,20">
+                    <TextBlock VerticalAlignment="Center"
+                               HorizontalAlignment="Center"></TextBlock>
+                </Border>
+            </Grid>
         </Border>
     </Grid>
 </UserControl>
