@@ -129,6 +129,23 @@
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
+                                <GridViewColumn     Width="{Binding ActualWidth, 
+                                                    ElementName=listView, Converter={StaticResource WidthConverter}, 
+                                                    ConverterParameter=0.7}">
+                                    <GridViewColumn.Header>
+                                        <TextBlock Text="Практика" 
+                                                   FontWeight="Bold"
+                                                   Foreground="White"
+                                                   FontSize="14"
+                                                   TextWrapping="Wrap"/>
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding CompletedExercises}"
+                                                       HorizontalAlignment="Center"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
