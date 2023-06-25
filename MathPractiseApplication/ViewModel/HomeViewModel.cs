@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace MathPractiseApplication.ViewModel
 {
@@ -14,10 +15,9 @@ namespace MathPractiseApplication.ViewModel
         private User _userAccount;
         private IUserRepository _userRepository;
 
+        private List<User> _allUserAccs;
         private string _testStat;
         private string _practiseStat;
-        private List<User> _allUserAccs;
-
         public string TestStat
         {
             get => _testStat;
@@ -27,6 +27,8 @@ namespace MathPractiseApplication.ViewModel
                 OnPropertyChanged(nameof(TestStat));
             }
         }
+
+        
 
         public string PractiseStat
         {
@@ -50,7 +52,7 @@ namespace MathPractiseApplication.ViewModel
         {
             _userRepository = new UserExcelRepository();
             LoadUserData();
-            TestStat = UserAcc.TestResults.ToString();
+            TestStat = UserAcc.TestResults;
             PractiseStat = UserAcc.CompletedExercises.ToString();
             AllUserAccs = _userRepository.GetAllUsers();
         }

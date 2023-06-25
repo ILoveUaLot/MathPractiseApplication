@@ -115,6 +115,8 @@ namespace MathPractiseApplication.Repositories
                     {
                         worksheetUsers.Cells[row, 2].Value = user.Name;
                         worksheetUsers.Cells[row, 3].Value = user.Password;
+                        worksheetUsers.Cells[row, 4].Value = user.CompletedExercises;
+                        worksheetUsers.Cells[row, 5].Value = user.TestResults;
                         break;
                     }
                 }
@@ -156,7 +158,9 @@ namespace MathPractiseApplication.Repositories
                     {
                         int id = Convert.ToInt32(worksheetUsers.Cells[row, 1].Value);
                         string password = worksheetUsers.Cells[row, 3].Value.ToString();
-                        return new User { Id = id, Name = name, Password = password };
+                        int exersizeStat = int.Parse(worksheetUsers.Cells[row,4].Value.ToString());
+                        string testStat = 
+                        return new User { Id = id, Name = name, Password = password, CompletedExercises = exersizeStat,};
                     }
                 }
             }
