@@ -13,14 +13,18 @@ namespace MathPractiseApplication.Repositories
     public class UserExcelRepository : IUserRepository
     {
         ExcelPackage userPackage;
-        string filePath = "Data/Users.xlsx";
+
+        string filePath;
 
         public UserExcelRepository()
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            string projectPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+            filePath = Path.Combine(projectPath, "Data/Users.xlsx");
 
             if (File.Exists(filePath))
             {
+                var file = new FileInfo(filePath).FullName;
                 userPackage = new ExcelPackage(new FileInfo(filePath));
             }
             else
@@ -159,8 +163,8 @@ namespace MathPractiseApplication.Repositories
                         int id = Convert.ToInt32(worksheetUsers.Cells[row, 1].Value);
                         string password = worksheetUsers.Cells[row, 3].Value.ToString();
                         int exersizeStat = int.Parse(worksheetUsers.Cells[row,4].Value.ToString());
-                        string testStat = 
-                        return new User { Id = id, Name = name, Password = password, CompletedExercises = exersizeStat,};
+                        string testResults = worksheetUsers.Cells[row, 5].Value.ToString();
+                        return new User(name,password) { Id = id, CompletedExercises = exersizeStat, TestResults = testResults};
                     }
                 }
             }
