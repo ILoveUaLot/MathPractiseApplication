@@ -45,46 +45,69 @@ namespace MathPractiseApplication.ViewModel
             }
         }
         private bool _isRadioButton0Checked;
+
+        private bool _isRadioButton1Checked;
+
+        private bool _isRadioButton2Checked;
+
+        private bool _isRadioButton3Checked;
         public bool IsRadioButton0Checked
         {
             get => _isRadioButton0Checked;
             set
             {
-                SetProperty(ref _isRadioButton0Checked, value);
-                if (value) SelectedAnswer = 0;
+                if (SetProperty(ref _isRadioButton0Checked, value) && value)
+                {
+                    IsRadioButton1Checked = false;
+                    IsRadioButton2Checked = false;
+                    IsRadioButton3Checked = false;
+                    SelectedAnswer = 0;
+                }
             }
         }
 
-        private bool _isRadioButton1Checked;
         public bool IsRadioButton1Checked
         {
             get => _isRadioButton1Checked;
             set
             {
-                SetProperty(ref _isRadioButton1Checked, value);
-                if (value) SelectedAnswer = 1;
+                if (SetProperty(ref _isRadioButton1Checked, value) && value)
+                {
+                    IsRadioButton0Checked = false;
+                    IsRadioButton2Checked = false;
+                    IsRadioButton3Checked = false;
+                    SelectedAnswer = 1;
+                }
             }
         }
 
-        private bool _isRadioButton2Checked;
         public bool IsRadioButton2Checked
         {
             get => _isRadioButton2Checked;
             set
             {
-                SetProperty(ref _isRadioButton2Checked, value);
-                if (value) SelectedAnswer = 2;
+                if (SetProperty(ref _isRadioButton2Checked, value) && value)
+                {
+                    IsRadioButton0Checked = false;
+                    IsRadioButton1Checked = false;
+                    IsRadioButton3Checked = false;
+                    SelectedAnswer = 2;
+                }
             }
         }
 
-        private bool _isRadioButton3Checked;
         public bool IsRadioButton3Checked
         {
             get => _isRadioButton3Checked;
             set
             {
-                SetProperty(ref _isRadioButton3Checked, value);
-                if (value) SelectedAnswer = 3;
+                if (SetProperty(ref _isRadioButton3Checked, value) && value)
+                {
+                    IsRadioButton0Checked = false;
+                    IsRadioButton1Checked = false;
+                    IsRadioButton2Checked = false;
+                    SelectedAnswer = 3;
+                }
             }
         }
 
