@@ -106,6 +106,7 @@ namespace MathPractiseApplication.ViewModel
 
             _userRepository = new UserExcelRepository();
             LoadCurrentUser();
+            ExecuteShowHomeViewCommand(null);
         }
 
         public ICommand ShowTheoryViewCommand { get; }
