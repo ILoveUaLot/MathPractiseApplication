@@ -39,7 +39,7 @@
                 <!--content section-->
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            
+
             <!--navigation menu-->
             <Border CornerRadius="10,0,0,10"
                     
@@ -49,13 +49,13 @@
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,1" EndPoint="1,07">
                         <GradientStop Color="{StaticResource SecondaryBackgroundColor1}" Offset="0"/>
-                        <GradientStop Color="{StaticResource SecondaryBackgroundColor2}" Offset="1"/> 
+                        <GradientStop Color="{StaticResource SecondaryBackgroundColor2}" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
 
                 <StackPanel Orientation="Vertical"
                             Visibility="{Binding TestingViewVisibility, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
-                    
+
                     <StackPanel Orientation="Horizontal"
                             Height="50"
                             Margin="10,10,15,0">
@@ -69,10 +69,10 @@
                                    VerticalAlignment="Center"
                                    Margin="10,0,0,0"
                                    Foreground="{StaticResource titleColor2}">
-                            
+
                         </TextBlock>
                     </StackPanel>
-                    
+
                     <!--Menu buttons-->
                     <RadioButton Style="{StaticResource menuButton}"
                                  Tag="{StaticResource color1}"
@@ -83,7 +83,8 @@
                             <TextBlock Text="Главная" Style="{StaticResource menuButtonText}"></TextBlock>
                         </StackPanel>
                     </RadioButton>
-                    <RadioButton Style="{StaticResource menuButton}"
+                    <RadioButton IsChecked="{Binding CurrentChildViewIsPractise}"
+                                 Style="{StaticResource menuButton}"
                                  Tag="{StaticResource color3}"
                                  Command="{Binding ShowPractiseViewCommand}">
                         <StackPanel Orientation="Horizontal">
@@ -91,7 +92,8 @@
                             <TextBlock Text="Практика" Style="{StaticResource menuButtonText}"></TextBlock>
                         </StackPanel>
                     </RadioButton>
-                    <RadioButton Style="{StaticResource menuButton}"
+                    <RadioButton IsChecked="{Binding CurrentChildViewIsTheory}"
+                                 Style="{StaticResource menuButton}"
                                  Tag="{StaticResource color5}"
                                  Command="{Binding ShowTheoryViewCommand}">
                         <StackPanel Orientation="Horizontal">
@@ -99,7 +101,8 @@
                             <TextBlock Text="Теория" Style="{StaticResource menuButtonText}"></TextBlock>
                         </StackPanel>
                     </RadioButton>
-                    <RadioButton Style="{StaticResource menuButton}"
+                    <RadioButton IsChecked="{Binding CurrentChildViewIsTest}"
+                                 Style="{StaticResource menuButton}"
                                  Tag="{StaticResource color4}"
                                  Command="{Binding ShowTestViewCommand}">
                         <StackPanel Orientation="Horizontal">
@@ -117,7 +120,7 @@
                     </RadioButton>
                 </StackPanel>
             </Border>
-            
+
             <!--Content menu-->
             <Border CornerRadius="0,10,10,0"
                     Grid.Column="1"
@@ -147,7 +150,8 @@
                                 Background="Transparent"
                                 Margin="0,0,5,0"
                                 MouseLeftButtonDown="ControlPanel_MouseLeftButtonDown"
-                                Cursor="SizeAll">
+                                Cursor="SizeAll"
+                                Visibility="{Binding TestingViewVisibility, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
                         <Button Name="Closebtn"
                                 Style="{StaticResource controlButton}"
                                 Tag="{StaticResource color6}"
@@ -174,9 +178,31 @@
                     <ContentControl Content="{Binding CurrentChildView}"
                                     Grid.Row="2"
                                     Margin="25"></ContentControl>
+                    <material:PopupBox IsPopupOpen="{Binding IsConfirmationPopupOpen, Mode=TwoWay}"
+                                       Grid.Row="2"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Visibility="Hidden">
+                        <StackPanel
+                                    >
+                            <TextBlock Text="Вы уверены, что готовы пройти тест? После перехода на тест вы не сможете вернуться назад, а ваш результат будет занесен в статистику"
+                                       TextWrapping="Wrap"
+                                       Width="300"
+                                       Margin="15"
+                                       FontSize="16"/>
+                            <StackPanel Orientation="Horizontal" 
+                                        HorizontalAlignment="Center"
+                                        Margin="0,30,0,0">
+                                <Button Content="Да" 
+                                        Command="{Binding AcceptCommand}"
+                                        Margin="0,0,50,0"/>
+                                <Button Content="Нет" 
+                                        Command="{Binding DeclineCommand}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </material:PopupBox>
                 </Grid>
             </Border>
-            
         </Grid>
     </Border>
 </Window>

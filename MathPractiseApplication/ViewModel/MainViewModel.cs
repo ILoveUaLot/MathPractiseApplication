@@ -21,17 +21,64 @@ namespace MathPractiseApplication.ViewModel
         private User _userAccount;
         private UserAccountModel _userAccountModel;
         private UserControl _currentChildView;
+
         private WindowState _windowState;
         private bool _testingViewVisibility;
-        private bool _currentChildViewIsHome;
 
+        private bool _currentChildViewIsHome;
+        private bool _currentChildViewIsPractise;
+        private bool _currentChildViewIsTest;
+        private bool _currentChildViewIsTheory;
+        private string _previousState;
+
+        private bool _isConfirmationPopupOpen;
+        public bool IsConfirmationPopupOpen
+        {
+            get => _isConfirmationPopupOpen;
+            set
+            {                
+                _isConfirmationPopupOpen = value;
+                OnPropertyChanged(nameof(IsConfirmationPopupOpen));
+            }
+        }
         public bool CurrentChildViewIsHome
         {
             get => _currentChildViewIsHome;
             set
             {
                 _currentChildViewIsHome = value;
+                _previousState = "Home";
                 OnPropertyChanged(nameof(CurrentChildViewIsHome));
+            }
+        }
+        public bool CurrentChildViewIsPractise
+        {
+            get => _currentChildViewIsPractise;
+            set
+            {
+                _currentChildViewIsPractise = value;
+                _previousState = "Practise";
+                OnPropertyChanged(nameof(CurrentChildViewIsPractise));
+            }
+        }
+        public bool CurrentChildViewIsTest
+        {
+            get => _currentChildViewIsTest;
+            set
+            {
+                _currentChildViewIsTest = value;
+                _previousState = "Test";               
+                OnPropertyChanged(nameof(CurrentChildViewIsTest));
+            }
+        }
+        public bool CurrentChildViewIsTheory
+        {
+            get => _currentChildViewIsTheory;
+            set
+            {
+                _currentChildViewIsTheory = value;
+                _previousState = "Theory";
+                OnPropertyChanged(nameof(CurrentChildViewIsTheory));
             }
         }
         public bool TestingViewVisibility
@@ -58,14 +105,7 @@ namespace MathPractiseApplication.ViewModel
             set
             {
                 _currentChildView = value;
-                if (value is TestView)
-                {
-                    TestingViewVisibility = true;
-                    MainWindowState = WindowState.Maximized;
-                }
-                CurrentChildViewIsHome = value is HomeView;
                 OnPropertyChanged(nameof(CurrentChildView));
-                OnPropertyChanged(nameof(CurrentChildViewIsHome));
             }
         }
         public UserAccountModel UserAccountModel
@@ -103,6 +143,8 @@ namespace MathPractiseApplication.ViewModel
             ShowPractiseViewCommand = new ViewModelCommand(ExecuteShowPractiseViewCommand);
             ShowTestViewCommand = new ViewModelCommand(ExecuteShowTestViewCommand);
             ShowHomeViewCommand = new ViewModelCommand(ExecuteShowHomeViewCommand);
+            AcceptCommand = new ViewModelCommand(ExecuteAcceptCommand);
+            DeclineCommand = new ViewModelCommand(ExecuteDeclineCommand);
 
             _userRepository = new UserExcelRepository();
             LoadCurrentUser();
@@ -118,22 +160,60 @@ namespace MathPractiseApplication.ViewModel
 
         public void ExecuteShowHomeViewCommand(object obj)
         {
+            UpdateViewStates(true, false, false, false);
             CurrentChildView = new HomeView();
         }
         public void ExecuteShowTheoryViewCommand(object obj)
         {
+            UpdateViewStates(false, false, false, true);
             CurrentChildView = new ChooseTheoryView();
+        }
+
+        public ICommand AcceptCommand { get; }
+        public ICommand DeclineCommand { get; }
+
+        private void ExecuteAcceptCommand(object obj)
+        {
+            IsConfirmationPopupOpen = false;
+            UpdateViewStates(false, false, true, false);
+            MainWindowState = WindowState.Maximized;
+            TestingViewVisibility = true;
+            CurrentChildView = new TestView();
+        }
+
+        private void ExecuteDeclineCommand(object obj)
+        {
+            switch (_previousState)
+            {
+                case ("Home"):
+                    CurrentChildViewIsHome = true;
+                    break;
+                case ("Theory"):
+                    CurrentChildViewIsTheory = true;
+                    break;
+                case ("Practise"):
+                    CurrentChildViewIsPractise = true;
+                    break;
+            }
+            IsConfirmationPopupOpen = false;
         }
         private void ExecuteShowTestViewCommand(object obj)
         {
-            CurrentChildView = new TestView();
+            IsConfirmationPopupOpen = true;
         }
 
         private void ExecuteShowPractiseViewCommand(object obj)
         {
-            CurrentChildView= new PractiseView();
+            UpdateViewStates(false, true, false, false);
+            CurrentChildView = new PractiseView();
         }
-
+        private void UpdateViewStates(bool home, bool practise, bool test, bool theory)
+        {
+            CurrentChildViewIsHome = home;
+            CurrentChildViewIsPractise = practise;
+            CurrentChildViewIsTest = test;
+            CurrentChildViewIsTheory = theory;
+        }
         private void LoadCurrentUser()
         {
             var user = _userRepository.UserGetByName(Thread.CurrentPrincipal.Identity.Name);
@@ -150,7 +230,5 @@ namespace MathPractiseApplication.ViewModel
                 Application.Current.Shutdown();
             }
         }
-
-        
     }
 }
