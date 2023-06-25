@@ -13,5 +13,21 @@ namespace MathPractiseApplication.Models
         public string Password { get; set; }
         public int CompletedExercises { get; set; } 
         public string TestResults { get; set; }
+
+        public User()
+        {
+            Id = 1;
+            Name = string.Empty;
+            Password = string.Empty;
+            CompletedExercises = 0;
+            TestResults = string.Empty;
+        }
+        public User(string name, string password)
+        {
+            Name= name;
+            Password= password;
+            CompletedExercises= 0;
+            TestResults = string.Empty;
+        }
     }
 }
