@@ -1,10 +1,12 @@
 ﻿using MathPractiseApplication.Models;
+using MathPractiseApplication.Repositories;
 using MathPractiseApplication.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -31,6 +33,9 @@ namespace MathPractiseApplication.ViewModel
         }
 
         private bool? _isCorrectAnswer;
+        private IUserRepository _userRepository;
+        private int countOfCorrectAnswers;
+
         public bool? IsCorrectAnswer
         {
             get { return _isCorrectAnswer; }
@@ -69,6 +74,16 @@ namespace MathPractiseApplication.ViewModel
             {
                 ResultMessage = "Ответ верный!";
                 IsCorrectAnswer = true;
+                countOfCorrectAnswers++;
+                User curentUser = _userRepository.UserGetByName(Thread.CurrentPrincipal.Identity.Name);
+                _userRepository.Edit(new User
+                {
+                    Id = curentUser.Id,
+                    Name = curentUser.Name,
+                    Password = curentUser.Password,
+                    CompletedExercises = countOfCorrectAnswers,
+                    TestResults = curentUser.TestResults
+                });
                 GenerateNewProblem();
             }
             else
@@ -88,6 +103,8 @@ namespace MathPractiseApplication.ViewModel
         }
         public PractiseViewModel()
         {
+            _userRepository = new UserExcelRepository();
+            countOfCorrectAnswers = _userRepository.UserGetByName(Thread.CurrentPrincipal.Identity.Name).CompletedExercises;
             _practiseService = ServiceLocator.ServiceProvider.GetService<IPractiseService>();
             CheckAnswerCommand = new ViewModelCommand(ExecuteCheckAnswerCommand, CanExecuteCheckAnswerCommand);
             ReplaceQuestionCommand = new ViewModelCommand(ExecuteReplaceQuestionCommand);
