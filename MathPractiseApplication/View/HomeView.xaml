@@ -5,12 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MathPractiseApplication.View"
              xmlns:viewmodel="clr-namespace:MathPractiseApplication.ViewModel"
+             xmlns:Converter="clr-namespace:MathPractiseApplication.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="Transparent">
     <UserControl.DataContext>
         <viewmodel:HomeViewModel/>
-    </UserControl.DataContext>    
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <Converter:WidthConverter x:Key="WidthConverter"></Converter:WidthConverter>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -79,8 +83,56 @@
                            Text="Статистика"></TextBlock>
                 </Border>
                 <Border Grid.Row="1" CornerRadius="0,0,20,20">
-                    <TextBlock VerticalAlignment="Center"
-                               HorizontalAlignment="Center"></TextBlock>
+                    <ListView x:Name="listView" ItemsSource="{Binding AllUserAccs}">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                <Setter Property="FontWeight" Value="Bold" />
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter Property="FontSize" Value="20"></Setter>
+                                <Setter Property="Margin" Value="20,0,0,0"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="{Binding ActualWidth, 
+                                                ElementName=listView, 
+                                                Converter={StaticResource WidthConverter}, ConverterParameter=0.6}">
+                                    <GridViewColumn.Header>
+                                        <TextBlock Text="Пользователь" 
+                                                   FontWeight="Bold"
+                                                   Foreground="White"
+                                                   FontSize="14"
+                                                   TextWrapping="Wrap"/>
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Name}"
+                                                       HorizontalAlignment="Center"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn     Width="{Binding ActualWidth, 
+                                                    ElementName=listView, Converter={StaticResource WidthConverter}, 
+                                                    ConverterParameter=0.4}">
+                                    <GridViewColumn.Header>
+                                        <TextBlock Text="Тест" 
+                                                   FontWeight="Bold"
+                                                   Foreground="White"
+                                                   FontSize="14"
+                                                   TextWrapping="Wrap"/>
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding TestResults}"
+                                                       HorizontalAlignment="Center"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
                 </Border>
             </Grid>
         </Border>
