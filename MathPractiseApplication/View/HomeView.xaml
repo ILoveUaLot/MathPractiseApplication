@@ -36,7 +36,9 @@
                 <Border Grid.Row="1" CornerRadius="0,0,20,20">
                     <TextBlock VerticalAlignment="Center"
                                HorizontalAlignment="Center"
-                               Text=""></TextBlock>
+                               Foreground="White"
+                               FontSize="70"
+                               Text="{Binding TestStat}"></TextBlock>
                 </Border>
             </Grid>
 
@@ -56,7 +58,9 @@
                 <Border Grid.Row="1" CornerRadius="0,0,20,20">
                     <TextBlock VerticalAlignment="Center"
                                HorizontalAlignment="Center"
-                               Text=""></TextBlock>
+                               Foreground="White"
+                               FontSize="70"
+                               Text="{Binding PractiseStat}"></TextBlock>
                 </Border>
             </Grid>
         </Border>

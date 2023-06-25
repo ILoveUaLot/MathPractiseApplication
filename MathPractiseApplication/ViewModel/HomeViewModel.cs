@@ -54,6 +54,7 @@ namespace MathPractiseApplication.ViewModel
             LoadUserData();
             TestStat = UserAcc.TestResults;
             PractiseStat = UserAcc.CompletedExercises.ToString();
+            TestStat = UserAcc.TestResults.ToString();
             AllUserAccs = _userRepository.GetAllUsers();
         }
 
