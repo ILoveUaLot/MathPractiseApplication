@@ -244,7 +244,15 @@ namespace MathPractiseApplication.ViewModel
             _correctAnswers = _userAnswers.Count(kvp => kvp.Key.IndexOfRightAnswer == kvp.Value);
             
             Messenger.Default.Send(new VisibilityChangedMessage(false));
-            _userRepository.Edit(_userRepository.UserGetByName(Thread.CurrentPrincipal.Identity.Name));
+            User curentUser = _userRepository.UserGetByName(Thread.CurrentPrincipal.Identity.Name);
+            _userRepository.Edit(new User
+            {
+                Id = curentUser.Id,
+                Name = curentUser.Name,
+                Password = curentUser.Password,
+                CompletedExercises = curentUser.CompletedExercises,
+                TestResults = $"{_correctAnswers}/{Questions.Count - 1}"
+            }); 
             return _correctAnswers;
         }
     }
