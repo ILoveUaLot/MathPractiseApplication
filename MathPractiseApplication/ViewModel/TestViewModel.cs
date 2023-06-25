@@ -20,6 +20,7 @@ namespace MathPractiseApplication.ViewModel
         private List<TestModel> questions;
         private ITestQuestionsRepository _questionsRepository;
         private IUserRepository _userRepository;
+
         private TestModel _currentQuestion;
         private int _currentQuestionIndex;
         private int _correctAnswers = 0;
@@ -242,8 +243,6 @@ namespace MathPractiseApplication.ViewModel
         public int CalculateCorrectAnswers()
         {
             _correctAnswers = _userAnswers.Count(kvp => kvp.Key.IndexOfRightAnswer == kvp.Value);
-            
-            Messenger.Default.Send(new VisibilityChangedMessage(false));
             User curentUser = _userRepository.UserGetByName(Thread.CurrentPrincipal.Identity.Name);
             _userRepository.Edit(new User
             {
@@ -251,8 +250,10 @@ namespace MathPractiseApplication.ViewModel
                 Name = curentUser.Name,
                 Password = curentUser.Password,
                 CompletedExercises = curentUser.CompletedExercises,
-                TestResults = $"{_correctAnswers}/{Questions.Count - 1}"
-            }); 
+                TestResults = $"{_correctAnswers}/{Questions.Count}"
+            });
+
+            Messenger.Default.Send(new VisibilityChangedMessage(false));
             return _correctAnswers;
         }
     }
