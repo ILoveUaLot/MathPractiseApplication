@@ -8,11 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Data\TestQuestions.xlsx" />
-    <None Remove="Data\Users.xlsx" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Data\TestQuestions.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
