@@ -104,7 +104,27 @@ namespace MathPractiseApplication.Repositories
             }
             return validUser;
         }
+        public bool CreatedUser(NetworkCredential credential)
+        {
+            bool validUser = false;
+            using (var package = new ExcelPackage(new FileInfo(filePath)))
+            {
+                var worksheetUsers = package.Workbook.Worksheets["Users"];
+                int totalRows = worksheetUsers.Dimension.End.Row;
 
+                for (int row = 2; row <= totalRows; row++)
+                {
+                    string name = worksheetUsers.Cells[row, 2].Value.ToString();
+
+                    if (name == credential.UserName)
+                    {
+                        validUser = true;
+                        break;
+                    }
+                }
+            }
+            return validUser;
+        }
         public void Edit(User user)
         {
             using (var package = new ExcelPackage(new FileInfo(filePath)))

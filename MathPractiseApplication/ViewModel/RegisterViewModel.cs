@@ -64,7 +64,7 @@ namespace MathPractiseApplication.ViewModel
             User newUser = new User(Username, Password);
 
             bool isAlreadyCreatedUser = userRepository.
-                AuthenticateUser(new System.Net.NetworkCredential(Username, Password));
+                CreatedUser(new System.Net.NetworkCredential(Username, Password));
             if (!isAlreadyCreatedUser)
             {
                 userRepository.Add(newUser);

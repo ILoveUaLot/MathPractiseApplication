@@ -15,6 +15,7 @@ namespace MathPractiseApplication.Models
         void Remove(int id);
         User UserGetById(int id);
         User UserGetByName(string username);
+        bool CreatedUser(NetworkCredential credential);
         List<User> GetAllUsers();
     }
 }
