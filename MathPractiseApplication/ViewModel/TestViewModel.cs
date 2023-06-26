@@ -265,7 +265,7 @@ namespace MathPractiseApplication.ViewModel
 
         public int CalculateCorrectAnswers()
         {
-            _correctAnswers = _userAnswers.Count(kvp => kvp.Key.IndexOfRightAnswer == kvp.Value);
+            _correctAnswers = _userAnswers.Count(kvp => kvp.Key.IndexOfRightAnswer-1 == kvp.Value);
             User curentUser = _userRepository.UserGetByName(Thread.CurrentPrincipal.Identity.Name);
             _userRepository.Edit(new User
             {
